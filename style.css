@@ -1,0 +1,32 @@
+.botao {
+    height: 30px;
+    width: 30px;
+    background-color: green;
+}
+
+#listaContatos li {
+    list-style-type: none;
+}
+
+.contato:hover {
+    background-color: grey;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.conteudoModal {
+    background-color: white;
+    margin: 15% auto;
+    padding: 5%;
+    width: 60%;
+}

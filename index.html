@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <button class="botao" id="botaoMenu">
+            <!-- <img src="./Assets/menu-aberto.svg">   -->
+        </button>
+        <div class="pesquisa">
+            <input type="search" id="caixaPesquisa">
+            <button>Pesquisar</button>
+        </div>
+    </div>
+
+    <div class="conteudo">
+        <h1>Nome</h1>
+        <h1>Telefone</h1>
+        <ul id="listaContatos"></ul>
+    </div>
+
+    <div class="botaoAdicionar">
+        <button class="botao" id="botaoAdicionar" onclick="adicionarContato()">
+            <!-- <img src="./Assets/adicionar.svg">  -->
+            +
+        </button>
+    </div>
+
+    <div class="modal" id="modalInformacoes">
+        <div class="conteudoModal" id="conteudoModalInfo">
+            <button class="botao" onclick="fecharModal()">X</button>
+            <h1 id="nomeModal"></h1>
+            <span>Telefone</span>
+            <span id="telefoneModal"></span>
+        </div>
+    </div>
+
+    <div class="modal" id="modalAdicionar">
+        <div class="conteudoModal" id="conteudoModalAdd">
+            <button class="botao" onclick="fecharModal()">X</button>
+            <br>
+            <span>Nome:</span>
+            <input type="text">
+            <br>
+            <span>Telefone:</span>
+            <input type="text">
+            <button class="botao" onclick="adicionarCampo()">+</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
