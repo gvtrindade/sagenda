@@ -1,7 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: grid;
+}
+
+.header {
+    background-color: #2A7886;
+    position: sticky;
+}
+
+.pesquisa {
+    position: relative;
+    left: 80%;
+    bottom: 15px;
+    /* transform: translateY(-50%); */
+}
+
 .botao {
     height: 30px;
     width: 30px;
     background-color: green;
+}
+
+#botaoAdicionar {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
+
+.conteudo {
+    position: relative;
+    background-color: #F1F3F4;
+    left: 23%;
+    width: 52%;
 }
 
 #listaContatos li {

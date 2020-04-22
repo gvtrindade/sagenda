@@ -15,14 +15,16 @@
             <!-- <img src="./Assets/menu-aberto.svg">   -->
         </button>
         <div class="pesquisa">
-            <input type="search" id="caixaPesquisa">
-            <button>Pesquisar</button>
+            <input type="search" id="caixaPesquisa" onkeyup="pesquisar()">
+            <button onclick="pesquisar()">Pesquisar</button>
         </div>
     </div>
 
     <div class="conteudo">
-        <h1>Nome</h1>
-        <h1>Telefone</h1>
+        <div id="titulos">
+            <h1>Nome</h1>
+            <h1>Telefone</h1>
+        </div>
         <ul id="listaContatos"></ul>
     </div>
 
@@ -39,6 +41,10 @@
             <h1 id="nomeModal"></h1>
             <span>Telefone</span>
             <span id="telefoneModal"></span>
+            <span>Email</span>
+            <span id="emailModal"></span>
+            <span>Categoria</span>
+            <span id="categoriaModal"></span>
         </div>
     </div>
 
@@ -57,8 +63,14 @@
             <span>Email:</span>
             <input id="emailContato" type="text">
             <br>
-            <span>Categoria:</span>
-            <input id="categoriaContato" type="text">
+            <form>
+                <label>Categoria:</label>
+                <select id="categoriaContato" autocomplete="off">
+                    <option value="SEQUALOG">SEQUALOG</option>
+                    <option value="Senado" selected>Senado</option>
+                    <option value="Externo">Externo</option>
+                </select>
+            </form>
             <br>
             <button class="botao" onclick="salvarContato()">Salvar</button>
         </div>
@@ -66,7 +78,7 @@
 
 
     <script src="script.js"></script>
-    <script src="data.json"></script>
+    <!-- <script src="data.json"></script> -->
 
 
 </body>

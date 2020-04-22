@@ -4,6 +4,7 @@ window.onload = function() {
 };
 
 const listaContatos = document.getElementById("listaContatos");
+const caixaPesquisa = document.getElementById("caixaPesquisa");
 const nomeContato = document.getElementById("nomeContato");
 const telefoneContato = document.getElementById("telefoneContato");
 const emailContato = document.getElementById("emailContato");
@@ -16,7 +17,7 @@ const conteudoModalAdd = [
 
 
 const contatos = [
-    { "nome": "Gabriel Trindade", "telefone": "3212-3123", "email": "", "categoria": "Servidor" },
+    { "nome": "Gabriel Trindade", "telefone": "3912-3123", "email": "", "categoria": "Servidor" },
     { "nome": "Matheus Guedes", "telefone": "3654-3123", "email": "", "categoria": "Servidor" },
     { "nome": "Edionay Aguiar", "telefone": "3212-8765", "email": "", "categoria": "Servidor" },
 ];
@@ -26,6 +27,7 @@ const contatos = [
 //Limpar modal de adicionar
 function limparModalAdd() {
 
+    caixaPesquisa.value = "";
     nomeContato.value = "";
     telefoneContato.value = "";
     emailContato.value = "";
@@ -33,7 +35,7 @@ function limparModalAdd() {
 
 };
 
-//Mostrar contatos
+//Mostrar lista de contatos
 function mostrarContatos() {
 
     listaContatos.innerHTML = "";
@@ -50,7 +52,8 @@ function mostrarContatos() {
 
         nome.innerText = contatos[i].nome;
         telefone.innerText = contatos[i].telefone;
-
+        nome.className = "Data";
+        telefone.className = "Data";
 
         listaContatos.appendChild(contato);
         contato.appendChild(nome);
@@ -58,9 +61,8 @@ function mostrarContatos() {
 
 
         if (i !== contatos.length - 1) {
-            listaContatos.appendChild(hr);
+            contato.appendChild(hr);
         };
-
 
     };
 
@@ -145,4 +147,32 @@ function msgErroCadastrar() {
         }
     });
     if (resposta === true) { return true; };
+};
+
+//Função de pesquisa
+function pesquisar() {
+
+    let input, filter, content, Info, Class, txtValue;
+    input = document.getElementById("caixaPesquisa");
+    filter = input.value.toUpperCase();
+    content = document.getElementById("listaContatos");
+    Info = content.getElementsByClassName("contato");
+
+    for (let j = 0; j < Info.length; j++) {
+
+        for (let k = 0; k < Info[j].children.length - 1; k++) {
+
+            Class = Info[j].getElementsByClassName("Data")[k];
+            txtValue = Class.textContent || Class.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                Info[j].style.display = "";
+                break;
+            } else {
+                Info[j].style.display = "none";
+            };
+
+        };
+
+    };
+
 };
