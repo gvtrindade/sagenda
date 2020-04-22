@@ -1,8 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    display: grid;
 }
 
 .header {
@@ -10,12 +8,7 @@ body {
     position: sticky;
 }
 
-.pesquisa {
-    position: relative;
-    left: 80%;
-    bottom: 15px;
-    /* transform: translateY(-50%); */
-}
+.pesquisa {}
 
 .botao {
     height: 30px;
@@ -30,7 +23,6 @@ body {
 }
 
 .conteudo {
-    position: relative;
     background-color: #F1F3F4;
     left: 23%;
     width: 52%;

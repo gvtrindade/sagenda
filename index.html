@@ -65,14 +65,15 @@
             <br>
             <form>
                 <label>Categoria:</label>
-                <select id="categoriaContato" autocomplete="off">
+                <select required id="categoriaContato">
+                    <option value="">Selecione...</option>
                     <option value="SEQUALOG">SEQUALOG</option>
-                    <option value="Senado" selected>Senado</option>
+                    <option value="Senado">Senado</option>
                     <option value="Externo">Externo</option>
                 </select>
             </form>
             <br>
-            <button class="botao" onclick="salvarContato()">Salvar</button>
+            <button type="submit" class="botao" onclick="salvarContato()">Salvar</button>
         </div>
     </div>
 

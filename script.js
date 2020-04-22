@@ -1,6 +1,14 @@
+let contatos
+
+
 window.onload = function() {
-    limparModalAdd();
-    mostrarContatos();
+    fetch("./data.json")
+        .then(response => response.json())
+        .then(data => {
+            contatos = data.contatos
+            limparModalAdd();
+            mostrarContatos();
+        })
 };
 
 const listaContatos = document.getElementById("listaContatos");
@@ -16,11 +24,7 @@ const conteudoModalAdd = [
 ]
 
 
-const contatos = [
-    { "nome": "Gabriel Trindade", "telefone": "3912-3123", "email": "", "categoria": "Servidor" },
-    { "nome": "Matheus Guedes", "telefone": "3654-3123", "email": "", "categoria": "Servidor" },
-    { "nome": "Edionay Aguiar", "telefone": "3212-8765", "email": "", "categoria": "Servidor" },
-];
+
 
 // debugger
 
