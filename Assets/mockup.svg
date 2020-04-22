@@ -249,21 +249,21 @@
      borderopacity="1"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.77314815"
-     inkscape:cx="855.04678"
-     inkscape:cy="536.77292"
+     inkscape:zoom="0.38657408"
+     inkscape:cx="923.15261"
+     inkscape:cy="711.26156"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="g1079"
      showgrid="false"
      inkscape:pagecheckerboard="true"
      borderlayer="true"
      inkscape:showpageshadow="false"
      inkscape:snap-page="true"
-     inkscape:window-width="2560"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:window-width="1278"
+     inkscape:window-height="1008"
+     inkscape:window-x="1273"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
      units="px"
      inkscape:snap-bbox="false"
      inkscape:bbox-paths="false"
@@ -457,7 +457,8 @@
      id="layer2"
      inkscape:label="Conteúdo"
      transform="translate(0,-11.24998)"
-     style="display:inline">
+     style="display:inline"
+     sodipodi:insensitive="true">
     <rect
        style="opacity:1;fill:#f1f3f4;fill-opacity:1;stroke:none;stroke-width:0.73503524;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
        id="rect6671"
@@ -742,11 +743,62 @@
        d="M 133.63991,275.76781 H 374.35994"
        id="path6684"
        inkscape:connector-curvature="0" />
+    <g
+       id="g983">
+      <rect
+         y="17.197937"
+         x="0"
+         height="268.55206"
+         width="95.820358"
+         id="rect975"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="translate(0,11.24998)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path977"
+         d="M 95.820358,17.197937 V 285.75"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         transform="translate(0,11.24998)" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot985"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,0,11.24998)"><flowRegion
+         id="flowRegion987"><rect
+           id="rect989"
+           width="213.41318"
+           height="69.844315"
+           x="54.323353"
+           y="124.16766" /></flowRegion><flowPara
+         id="flowPara991"></flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="20.233833"
+       y="51.289204"
+       id="text995"><tspan
+         sodipodi:role="line"
+         id="tspan993"
+         x="20.233833"
+         y="51.289204"
+         style="stroke-width:0.26458332">Todos</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="19.541368"
+       y="69.318893"
+       id="text999"><tspan
+         sodipodi:role="line"
+         x="19.541368"
+         y="69.318893"
+         style="stroke-width:0.26458332"
+         id="tspan1001">Servidores</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer13"
-     inkscape:label="Header">
+     inkscape:label="Header"
+     sodipodi:insensitive="true">
     <rect
        style="opacity:1;fill:#2a7886;fill-opacity:1;stroke:none;stroke-width:2.13581038;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
        id="rect6593"
@@ -928,7 +980,8 @@
        inkscape:groupmode="layer"
        id="layer12"
        inkscape:label="BG"
-       style="display:inline">
+       style="display:inline"
+       sodipodi:insensitive="true">
       <rect
          style="display:inline;opacity:0.70400002;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.12491226;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
          id="rect6571"
@@ -943,7 +996,7 @@
          height="211.77863"
          width="152.51196"
          id="rect6306"
-         style="display:inline;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.79374999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="display:inline;fill:#f1f3f4;fill-opacity:1;stroke:none;stroke-width:0.79374999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <text
        xml:space="preserve"
@@ -956,54 +1009,321 @@
          x="210.43936"
          y="56.520416"
          style="stroke-width:0.26458332">Gabriel Trindade</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="206.97874"
-       y="82.807076"
-       id="text6155"><tspan
-         sodipodi:role="line"
-         id="tspan6153"
-         x="206.97874"
+    <g
+       id="g1053">
+      <text
+         id="text6155"
          y="82.807076"
-         style="font-size:8.81944466px;stroke-width:0.26458332">3215-5678</tspan></text>
-    <text
-       id="text6159"
-       y="74.737282"
-       x="207.69792"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="font-size:3.52777767px;stroke-width:0.26458332"
-         y="74.737282"
+         x="206.97874"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:8.81944466px;stroke-width:0.26458332"
+           y="82.807076"
+           x="206.97874"
+           id="tspan6153"
+           sodipodi:role="line">3215-5678</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
          x="207.69792"
-         id="tspan6157"
-         sodipodi:role="line">Telefone</tspan></text>
-    <text
-       id="text6262"
-       y="104.10718"
-       x="207.47467"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="font-size:4.23333311px;stroke-width:0.26458332"
-         y="104.10718"
+         y="74.737282"
+         id="text6159"><tspan
+           sodipodi:role="line"
+           id="tspan6157"
+           x="207.69792"
+           y="74.737282"
+           style="font-size:3.52777767px;stroke-width:0.26458332">Telefone</tspan></text>
+    </g>
+    <g
+       id="g1047">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
          x="207.47467"
-         id="tspan6260"
-         sodipodi:role="line">gabrielsvtrindade@gmail.com</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="207.35341"
-       y="98.683205"
-       id="text6266"><tspan
-         sodipodi:role="line"
-         id="tspan6264"
-         x="207.35341"
+         y="104.10718"
+         id="text6262"><tspan
+           sodipodi:role="line"
+           id="tspan6260"
+           x="207.47467"
+           y="104.10718"
+           style="font-size:4.23333311px;stroke-width:0.26458332">gabrielsvtrindade@gmail.com</tspan></text>
+      <text
+         id="text6266"
          y="98.683205"
-         style="font-size:3.52777767px;stroke-width:0.26458332">Email</tspan></text>
+         x="207.35341"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:3.52777767px;stroke-width:0.26458332"
+           y="98.683205"
+           x="207.35341"
+           id="tspan6264"
+           sodipodi:role="line">Email</tspan></text>
+    </g>
     <path
        style="display:inline;fill:none;stroke:#000000;stroke-width:0.2851195;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.3658537"
        d="m 207.69791,63.764582 h 92.60417"
        id="path6309-8"
        inkscape:connector-curvature="0" />
+    <g
+       id="g1041"
+       transform="translate(-0.48395863)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="207.46271"
+         y="127.08996"
+         id="text1031"><tspan
+           sodipodi:role="line"
+           id="tspan1029"
+           x="207.46271"
+           y="127.08996"
+           style="font-size:8.81944466px;stroke-width:0.26458332">Servidor</tspan></text>
+      <text
+         id="text1035"
+         y="119.02016"
+         x="208.18188"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:3.52777767px;stroke-width:0.26458332"
+           y="119.02016"
+           x="208.18188"
+           id="tspan1033"
+           sodipodi:role="line">Categoria</tspan></text>
+    </g>
+    <path
+       id="path1065"
+       d="m 321.82783,50.0117 -1.88929,-1.889276 c -0.10542,-0.105422 -0.27621,-0.105422 -0.38166,0 l -6.20762,6.207649 c -0.0506,0.05061 -0.0791,0.119143 -0.0791,0.190827 l -6.6e-4,1.889806 c 0,0.07144 0.0285,0.14022 0.0791,0.190827 0.0506,0.05061 0.11939,0.07908 0.19082,0.07908 l 1.88981,-4.97e-4 c 0.0717,0 0.14022,-0.02847 0.19082,-0.07907 l 6.20766,-6.207649 c 0.10542,-0.105421 0.10542,-0.276214 0,-0.381653 z m -6.51065,6.129052 -1.50826,4.96e-4 6.7e-4,-1.508259 4.45358,-4.45359 1.50773,1.50773 c -2e-5,0 -4.45359,4.453589 -4.45359,4.453589 z m 4.83526,-4.835261 -1.50773,-1.507711 1.10286,-1.102858 1.50773,1.507728 z"
+       inkscape:connector-curvature="0"
+       style="stroke-width:0.01768223" />
+  </g>
+  <g
+     style="display:inline"
+     inkscape:label="Adicionar"
+     id="g1119"
+     inkscape:groupmode="layer">
+    <g
+       style="display:inline"
+       inkscape:label="BG"
+       id="g1079"
+       inkscape:groupmode="layer">
+      <rect
+         y="-3.1250019e-07"
+         x="-5.5555591e-07"
+         height="285.75"
+         width="508"
+         id="rect1075"
+         style="display:inline;opacity:0.70400002;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.12491226;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0" />
+      <rect
+         style="display:inline;fill:#f1f3f4;fill-opacity:1;stroke:none;stroke-width:0.79374999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1077"
+         width="152.51196"
+         height="211.77863"
+         x="177.74402"
+         y="36.985687"
+         ry="4.446732" />
+    </g>
+    <text
+       id="text1083"
+       y="56.520416"
+       x="210.43936"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="56.520416"
+         x="210.43936"
+         id="tspan1081"
+         sodipodi:role="line">Gabriel Trindade</tspan></text>
+    <g
+       id="g1140">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="206.97874"
+         y="82.807076"
+         id="text1087"><tspan
+           sodipodi:role="line"
+           id="tspan1085"
+           x="206.97874"
+           y="82.807076"
+           style="font-size:8.81944466px;stroke-width:0.26458332">3215-5678</tspan></text>
+      <text
+         id="text1091"
+         y="74.737282"
+         x="207.69792"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:3.52777767px;stroke-width:0.26458332"
+           y="74.737282"
+           x="207.69792"
+           id="tspan1089"
+           sodipodi:role="line">Telefone</tspan></text>
+    </g>
+    <g
+       id="g1103">
+      <text
+         id="text1097"
+         y="104.10718"
+         x="207.47467"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:4.23333311px;stroke-width:0.26458332"
+           y="104.10718"
+           x="207.47467"
+           id="tspan1095"
+           sodipodi:role="line">gabrielsvtrindade@gmail.com</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="207.35341"
+         y="98.683205"
+         id="text1101"><tspan
+           sodipodi:role="line"
+           id="tspan1099"
+           x="207.35341"
+           y="98.683205"
+           style="font-size:3.52777767px;stroke-width:0.26458332">Email</tspan></text>
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path1105"
+       d="m 207.69791,63.764582 h 92.60417"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.2851195;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.3658537" />
+    <g
+       transform="translate(-0.48395863)"
+       id="g1115">
+      <text
+         id="text1109"
+         y="127.08996"
+         x="207.46271"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:8.81944466px;stroke-width:0.26458332"
+           y="127.08996"
+           x="207.46271"
+           id="tspan1107"
+           sodipodi:role="line">Servidor</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="208.18188"
+         y="119.02016"
+         id="text1113"><tspan
+           sodipodi:role="line"
+           id="tspan1111"
+           x="208.18188"
+           y="119.02016"
+           style="font-size:3.52777767px;stroke-width:0.26458332">Categoria</tspan></text>
+    </g>
+    <g
+       id="g1146">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="207.58377"
+         y="45.941311"
+         id="text1125"><tspan
+           sodipodi:role="line"
+           id="tspan1123"
+           x="207.58377"
+           y="45.941311"
+           style="font-size:3.52777767px;stroke-width:0.26458332">Nome</tspan><tspan
+           sodipodi:role="line"
+           x="207.58377"
+           y="59.170479"
+           style="font-size:3.52777767px;stroke-width:0.26458332"
+           id="tspan1127" /></text>
+      <rect
+         y="47.288937"
+         x="207.69791"
+         height="13.829813"
+         width="92.604164"
+         id="rect1121"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.22827283;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g1169"
+       transform="translate(0,22.98838)">
+      <text
+         id="text1165"
+         y="45.941311"
+         x="207.58377"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           id="tspan1163"
+           style="font-size:3.52777767px;stroke-width:0.26458332"
+           y="45.941311"
+           x="207.58377"
+           sodipodi:role="line">Telefone</tspan></text>
+      <rect
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.22827283;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1167"
+         width="92.604164"
+         height="13.829813"
+         x="207.69791"
+         y="47.288937" />
+    </g>
+    <g
+       transform="translate(0,44.524862)"
+       id="g1179">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="207.58377"
+         y="45.941311"
+         id="text1175"><tspan
+           sodipodi:role="line"
+           x="207.58377"
+           y="45.941311"
+           style="font-size:3.52777767px;stroke-width:0.26458332"
+           id="tspan1195">Email</tspan></text>
+      <rect
+         y="47.288937"
+         x="207.69791"
+         height="13.829813"
+         width="92.604164"
+         id="rect1177"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.22827283;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g1189"
+       transform="translate(0,67.997208)">
+      <text
+         id="text1185"
+         y="45.941311"
+         x="207.58377"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           id="tspan1183"
+           style="font-size:3.52777767px;stroke-width:0.26458332"
+           y="45.941311"
+           x="207.58377"
+           sodipodi:role="line">Categoria</tspan></text>
+      <rect
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.22827283;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1187"
+         width="92.604164"
+         height="13.829813"
+         x="207.69791"
+         y="47.288937" />
+    </g>
+    <rect
+       style="opacity:1;fill:#512b58;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1201"
+       width="58.559875"
+       height="17.664755"
+       x="224.72005"
+       y="224.28632"
+       ry="5.807591" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="236.90543"
+       y="237.05902"
+       id="text1205"><tspan
+         sodipodi:role="line"
+         id="tspan1203"
+         x="236.90543"
+         y="237.05902"
+         style="fill:#ffffff;stroke-width:0.26458332">Salvar</tspan></text>
   </g>
 </svg>

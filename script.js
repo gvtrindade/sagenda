@@ -1,35 +1,67 @@
+window.onload = function() {
+    limparModalAdd();
+    mostrarContatos();
+};
+
 const listaContatos = document.getElementById("listaContatos");
+const nomeContato = document.getElementById("nomeContato");
+const telefoneContato = document.getElementById("telefoneContato");
+const emailContato = document.getElementById("emailContato");
+const categoriaContato = document.getElementById("categoriaContato");
+const conteudoModalAdd = [
+    nomeContato,
+    telefoneContato,
+    categoriaContato
+]
+
 
 const contatos = [
-    { "nome": "Gabriel Trindade", "telefone": "3212-3123" },
-    { "nome": "Matheus Guedes", "telefone": "3654-3123" },
-    { "nome": "Edionay Aguiar", "telefone": "3212-8765" },
+    { "nome": "Gabriel Trindade", "telefone": "3212-3123", "email": "", "categoria": "Servidor" },
+    { "nome": "Matheus Guedes", "telefone": "3654-3123", "email": "", "categoria": "Servidor" },
+    { "nome": "Edionay Aguiar", "telefone": "3212-8765", "email": "", "categoria": "Servidor" },
 ];
 
 // debugger
 
+//Limpar modal de adicionar
+function limparModalAdd() {
+
+    nomeContato.value = "";
+    telefoneContato.value = "";
+    emailContato.value = "";
+    categoriaContato.value = "";
+
+};
+
 //Mostrar contatos
-for (let i = 0; i < contatos.length; i++) {
-    let contato = document.createElement("li");
-    let nome = document.createElement("li");
-    let telefone = document.createElement("li");
-    const hr = document.createElement("hr");
+function mostrarContatos() {
 
-    contato.className = "contato";
-    contato.id = contatos[i].nome;
-    contato.onclick = mostrarModal;
+    listaContatos.innerHTML = "";
 
-    nome.innerText = contatos[i].nome;
-    telefone.innerText = contatos[i].telefone;
+    for (let i = 0; i < contatos.length; i++) {
+        let contato = document.createElement("li");
+        let nome = document.createElement("li");
+        let telefone = document.createElement("li");
+        const hr = document.createElement("hr");
+
+        contato.className = "contato";
+        contato.id = contatos[i].nome;
+        contato.onclick = mostrarModal;
+
+        nome.innerText = contatos[i].nome;
+        telefone.innerText = contatos[i].telefone;
 
 
-    listaContatos.appendChild(contato);
-    contato.appendChild(nome);
-    contato.appendChild(telefone);
+        listaContatos.appendChild(contato);
+        contato.appendChild(nome);
+        contato.appendChild(telefone);
 
 
-    if (i !== contatos.length - 1) {
-        listaContatos.appendChild(hr);
+        if (i !== contatos.length - 1) {
+            listaContatos.appendChild(hr);
+        };
+
+
     };
 
 };
@@ -59,12 +91,8 @@ function fecharModalInfo() {
 //Adicionar contato
 const modalAdicionar = document.getElementById("modalAdicionar")
 
-function adicionarContato() {
-
-
+function mostrarModalAdd() {
     modalAdicionar.style.display = "block";
-
-
 };
 
 function fecharModalAdd() {
@@ -77,4 +105,44 @@ window.onclick = function(event) {
     } else if (event.target == modalInformacoes) {
         modalInformacoes.style.display = "none";
     };
+};
+
+function Contato(nome, telefone, email, categoria) {
+    this.nome = nome;
+    this.telefone = telefone;
+    this.email = email;
+    this.categoria = categoria;
+};
+
+
+function salvarContato() {
+
+    if (msgErroCadastrar() === true) {
+        alert("Existem campos vazios!")
+        return
+    }
+
+    let infoContato = new Contato(
+        nomeContato.value,
+        telefoneContato.value,
+        emailContato.value,
+        categoriaContato.value
+    );
+
+    contatos.push(infoContato);
+    limparModalAdd();
+    mostrarContatos();
+    modalAdicionar.style.display = "none";
+
+};
+
+//Mensagem de erro no cadatro de contato
+function msgErroCadastrar() {
+    let resposta = new Boolean(false);
+    conteudoModalAdd.forEach(element => {
+        if (element.value === "") {
+            resposta = true;
+        }
+    });
+    if (resposta === true) { return true; };
 };

@@ -1,0 +1,7 @@
+{
+    "contatos": [
+        { "nome": "Gabriel Trindade", "telefone": "3212-3123", "email": "", "categoria": "Servidor" },
+        { "nome": "Matheus Guedes", "telefone": "3654-3123", "email": "", "categoria": "Servidor" },
+        { "nome": "Edionay Aguiar", "telefone": "3212-8765", "email": "", "categoria": "Servidor" },
+    ]
+}

@@ -27,7 +27,7 @@
     </div>
 
     <div class="botaoAdicionar">
-        <button class="botao" id="botaoAdicionar" onclick="adicionarContato()">
+        <button class="botao" id="botaoAdicionar" onclick="mostrarModalAdd()">
             <!-- <img src="./Assets/adicionar.svg">  -->
             +
         </button>
@@ -49,16 +49,24 @@
             <h1>Adicionar Contato</h1>
             <br>
             <span>Nome:</span>
-            <input type="text">
+            <input id="nomeContato" type="text">
             <br>
             <span>Telefone:</span>
-            <input type="text">
-            <button class="botao" onclick="adicionarCampo()">+</button>
+            <input id="telefoneContato" type="text">
+            <br>
+            <span>Email:</span>
+            <input id="emailContato" type="text">
+            <br>
+            <span>Categoria:</span>
+            <input id="categoriaContato" type="text">
+            <br>
+            <button class="botao" onclick="salvarContato()">Salvar</button>
         </div>
     </div>
 
 
     <script src="script.js"></script>
+    <script src="data.json"></script>
 
 
 </body>
