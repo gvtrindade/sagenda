@@ -4,19 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Agenda SEQUALOG</title>
 </head>
 
-<body>
+<body onfocus="selecionarPesquisa()">
 
     <div class="header">
         <button class="botao" id="botaoMenu">
-            <!-- <img src="./Assets/menu-aberto.svg">   -->
+            <img src="./Assets/Icones/menu.svg">  
         </button>
         <div class="pesquisa">
             <input type="search" id="caixaPesquisa" onkeyup="pesquisar()">
-            <button onclick="pesquisar()">Pesquisar</button>
+            <button class="botao" id="botaoPesquisar">            
+                <img src="./Assets/Icones/procurar.svg"> 
+            </button>
         </div>
     </div>
 
@@ -30,56 +33,49 @@
 
     <div class="botaoAdicionar">
         <button class="botao" id="botaoAdicionar" onclick="mostrarModalAdd()">
-            <!-- <img src="./Assets/adicionar.svg">  -->
-            +
+            <img src="./Assets/Icones/adicionar.svg"> 
         </button>
     </div>
 
     <div class="modal" id="modalInformacoes">
         <div class="conteudoModal" id="conteudoModalInfo">
-            <button class="botao" onclick="fecharModalInfo()">X</button>
-            <h1 id="nomeModal"></h1>
-            <span>Telefone</span>
-            <span id="telefoneModal"></span>
-            <span>Email</span>
-            <span id="emailModal"></span>
-            <span>Categoria</span>
-            <span id="categoriaModal"></span>
+            <button class="botao" onclick="fecharModal(event)">X</button>
+            <ul id="listaModal"></ul>
         </div>
     </div>
 
     <div class="modal" id="modalAdicionar">
         <div class="conteudoModal" id="conteudoModalAdd">
-            <button class="botao" onclick="fecharModalAdd()">X</button>
-            <br>
-            <h1>Adicionar Contato</h1>
-            <br>
-            <span>Nome:</span>
-            <input id="nomeContato" type="text">
-            <br>
-            <span>Telefone:</span>
-            <input id="telefoneContato" type="text">
-            <br>
-            <span>Email:</span>
-            <input id="emailContato" type="text">
-            <br>
+
+            <button class="botao" onclick="fecharModal(event)">X</button>
+
             <form>
+                <h1>Adicionar Contato</h1>
+
+                <label>Nome:</label>
+                <input id="nomeContato" type="text" required="true">
+
+                <label>Telefone:</label>
+                <input id="telefoneContato" type="text">
+
+                <label>Email:</label>
+                <input id="emailContato" type="text">
+
                 <label>Categoria:</label>
-                <select required id="categoriaContato">
+                <select id="categoriaContato" autocomplete="off" required="true">
                     <option value="">Selecione...</option>
                     <option value="SEQUALOG">SEQUALOG</option>
-                    <option value="Senado">Senado</option>
+                    <option value="Senado" selected>Senado</option>
                     <option value="Externo">Externo</option>
                 </select>
             </form>
-            <br>
-            <button type="submit" class="botao" onclick="salvarContato()">Salvar</button>
+
+            <button class="botao" onclick="salvarContato()">Salvar</button>
         </div>
     </div>
 
 
     <script src="script.js"></script>
-    <!-- <script src="data.json"></script> -->
 
 
 </body>

@@ -7,12 +7,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="512pt"
-   viewBox="0 0 512 512"
-   width="512pt"
+   height="384pt"
+   viewBox="0 -53 384 384"
+   width="384pt"
    version="1.1"
    id="svg8"
-   sodipodi:docname="adicionar.svg"
+   sodipodi:docname="menu-aberto.svg"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
      id="metadata14">
@@ -40,17 +40,23 @@
      inkscape:window-height="1017"
      id="namedview10"
      showgrid="false"
-     inkscape:zoom="0.34570313"
-     inkscape:cx="341.33333"
-     inkscape:cy="341.33333"
+     inkscape:zoom="1.3037281"
+     inkscape:cx="233.28675"
+     inkscape:cy="264.09752"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg8" />
   <path
-     d="m368 272h-224c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h224c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"
-     id="path4" />
+     d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"
+     id="path2"
+     style="fill:#ffffff" />
   <path
-     d="m256 384c-8.832031 0-16-7.167969-16-16v-224c0-8.832031 7.167969-16 16-16s16 7.167969 16 16v224c0 8.832031-7.167969 16-16 16zm0 0"
-     id="path6" />
+     d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"
+     id="path4"
+     style="fill:#ffffff" />
+  <path
+     d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"
+     id="path6"
+     style="fill:#ffffff" />
 </svg>

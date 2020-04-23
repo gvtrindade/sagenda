@@ -1,42 +1,48 @@
-let contatos
+//Inserir dados da base em um array
+const editJsonFile = require("edit-json-file");
+let arquivo = editJsonFile("./data.json");
+let objContatos = arquivo.data;
+let arrayDados = Object.entries(objContatos);
+let contatos = [];
+
+for (k = 0; k < arrayDados.length; k++) {
+    contatos.push(arrayDados[k][1]);
+};
 
 
 window.onload = function() {
-    fetch("./data.json")
-        .then(response => response.json())
-        .then(data => {
-            contatos = data.contatos
-            limparModalAdd();
-            mostrarContatos();
-        })
+    limparModalAdd();
+    mostrarContatos();
 };
 
+function selecionarPesquisa() {
+
+    if (modais[0].style.display === "" && modais[1].style.display === "") {
+        caixaPesquisa.select();
+    } else {
+        return;
+    };
+
+};
+
+
+//Variaveis utilizadas
 const listaContatos = document.getElementById("listaContatos");
+const modais = document.getElementsByClassName("modal");
 const caixaPesquisa = document.getElementById("caixaPesquisa");
 const nomeContato = document.getElementById("nomeContato");
 const telefoneContato = document.getElementById("telefoneContato");
 const emailContato = document.getElementById("emailContato");
 const categoriaContato = document.getElementById("categoriaContato");
-const conteudoModalAdd = [
-    nomeContato,
-    telefoneContato,
-    categoriaContato
-]
 
-
-
-
-// debugger
 
 //Limpar modal de adicionar
 function limparModalAdd() {
-
     caixaPesquisa.value = "";
     nomeContato.value = "";
     telefoneContato.value = "";
     emailContato.value = "";
     categoriaContato.value = "";
-
 };
 
 //Mostrar lista de contatos
@@ -45,27 +51,20 @@ function mostrarContatos() {
     listaContatos.innerHTML = "";
 
     for (let i = 0; i < contatos.length; i++) {
+
         let contato = document.createElement("li");
-        let nome = document.createElement("li");
-        let telefone = document.createElement("li");
-        const hr = document.createElement("hr");
 
         contato.className = "contato";
         contato.id = contatos[i].nome;
         contato.onclick = mostrarModal;
-
-        nome.innerText = contatos[i].nome;
-        telefone.innerText = contatos[i].telefone;
-        nome.className = "Data";
-        telefone.className = "Data";
-
         listaContatos.appendChild(contato);
-        contato.appendChild(nome);
-        contato.appendChild(telefone);
 
-
-        if (i !== contatos.length - 1) {
-            contato.appendChild(hr);
+        for (let l = 0; l < 2; l++) {
+            let info = document.createElement("li");
+            let data = ["nome", "telefone"]
+            info.innerText = contatos[i][data[l]];
+            info.className = "Data";
+            contato.appendChild(info);
         };
 
     };
@@ -76,33 +75,52 @@ function mostrarContatos() {
 const modalInformacoes = document.getElementById("modalInformacoes")
 
 function mostrarModal(event) {
-    const id = event.target.parentNode.id;
-    const nomeModal = document.getElementById("nomeModal");
-    const telefoneModal = document.getElementById("telefoneModal");
+    let id;
+    const listaModal = document.getElementById("listaModal");
+
+    if (event.target.className === "Data") {
+        id = event.target.parentNode.id;
+    } else {
+        id = event.target.id;
+    }
 
     let contato = contatos.find(element => element.nome === id);
 
-    nomeModal.innerText = contato.nome;
-    telefoneModal.innerText = contato.telefone;
+    for (let [key, value] of Object.entries(contato)) {
+
+        let info
+        if (`${key}` === "nome") {
+            info = document.createElement("h1");
+            info.innerText = `${ value }`;
+            info.style = "text-align: center"
+        } else {
+            info = document.createElement("li");
+            let data = `${ key }`.charAt(0).toUpperCase() + `${ key }`.slice(1);
+            info.innerText = data + `: ${ value }`;
+        }
+        info.className = "data";
+        listaModal.appendChild(info);
+
+    };
 
     modalInformacoes.style.display = "block";
-
 };
 
-function fecharModalInfo() {
-    modalInformacoes.style.display = "none";
-};
-
-
-//Adicionar contato
+//Modal para adicionar contato
 const modalAdicionar = document.getElementById("modalAdicionar")
+const listaModal = document.getElementById("listaModal")
 
 function mostrarModalAdd() {
     modalAdicionar.style.display = "block";
 };
 
-function fecharModalAdd() {
-    modalAdicionar.style.display = "none";
+function fecharModal(event) {
+    let conteudoModal = event.target.parentNode;
+    let modal = conteudoModal.parentNode.id;
+    document.getElementById(modal).style.display = "none";
+    if (modal === "modalInformacoes") {
+        listaModal.innerHTML = "";
+    };
 };
 
 window.onclick = function(event) {
@@ -110,16 +128,17 @@ window.onclick = function(event) {
         modalAdicionar.style.display = "none";
     } else if (event.target == modalInformacoes) {
         modalInformacoes.style.display = "none";
+        listaModal.innerHTML = "";
     };
 };
 
+//Adicionar contato
 function Contato(nome, telefone, email, categoria) {
     this.nome = nome;
     this.telefone = telefone;
     this.email = email;
     this.categoria = categoria;
 };
-
 
 function salvarContato() {
 
@@ -128,14 +147,19 @@ function salvarContato() {
         return
     }
 
-    let infoContato = new Contato(
+    let contato = new Contato(
         nomeContato.value,
         telefoneContato.value,
         emailContato.value,
         categoriaContato.value
     );
 
-    contatos.push(infoContato);
+    let nomeObjContato = nomeContato.value;
+
+    contatos.push(contato);
+    arquivo.set(nomeObjContato, contato);
+    arquivo.save();
+
     limparModalAdd();
     mostrarContatos();
     modalAdicionar.style.display = "none";
@@ -143,6 +167,12 @@ function salvarContato() {
 };
 
 //Mensagem de erro no cadatro de contato
+const conteudoModalAdd = [
+    nomeContato,
+    telefoneContato,
+    categoriaContato
+];
+
 function msgErroCadastrar() {
     let resposta = new Boolean(false);
     conteudoModalAdd.forEach(element => {

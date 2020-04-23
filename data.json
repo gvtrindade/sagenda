@@ -1,7 +1,26 @@
 {
-    "contatos": [
-        { "nome": "Gabriel Trindade", "telefone": "3212-3123", "email": "", "categoria": "Servidor" },
-        { "nome": "Matheus Guedes", "telefone": "3654-3123", "email": "", "categoria": "Servidor" },
-        { "nome": "Edionay Aguiar", "telefone": "3212-8765", "email": "", "categoria": "Servidor" }
-    ]
+  "Gabriel Trindade": {
+    "nome": "Gabriel Trindade",
+    "telefone": "3212-3123",
+    "email": "",
+    "categoria": "Servidor"
+  },
+  "Matheus Guedes": {
+    "nome": "Matheus Guedes",
+    "telefone": "3654-3123",
+    "email": "",
+    "categoria": "Servidor"
+  },
+  "Edionay Aguiar": {
+    "nome": "Edionay Aguiar",
+    "telefone": "3212-8765",
+    "email": "",
+    "categoria": "Servidor"
+  },
+  "Maria Tereza Córdova": {
+    "nome": "Maria Tereza Córdova",
+    "telefone": "6541-6154",
+    "email": "aghg@gmail.com",
+    "categoria": "SEQUALOG"
+  }
 }
