@@ -13,16 +13,14 @@ for (k = 0; k < arrayDados.length; k++) {
 window.onload = function() {
     limparModalAdd();
     mostrarContatos();
+    window.addEventListener("focus", selecionarPesquisa);
 };
 
 function selecionarPesquisa() {
 
-    if (modais[0].style.display === "" && modais[1].style.display === "") {
+    if (mostrandoModal === false) {
         caixaPesquisa.select();
-    } else {
-        return;
     };
-
 };
 
 
@@ -34,6 +32,7 @@ const nomeContato = document.getElementById("nomeContato");
 const telefoneContato = document.getElementById("telefoneContato");
 const emailContato = document.getElementById("emailContato");
 const categoriaContato = document.getElementById("categoriaContato");
+let mostrandoModal = false
 
 
 //Limpar modal de adicionar
@@ -47,7 +46,6 @@ function limparModalAdd() {
 
 //Mostrar lista de contatos
 function mostrarContatos() {
-
     listaContatos.innerHTML = "";
 
     for (let i = 0; i < contatos.length; i++) {
@@ -80,6 +78,7 @@ function mostrarContatos() {
 const modalInformacoes = document.getElementById("modalInformacoes")
 
 function mostrarModal(event) {
+    mostrandoModal = true;
     let id;
     const listaModal = document.getElementById("listaModal");
     const infoContato = document.createElement("div");
@@ -123,13 +122,16 @@ const modalAdicionar = document.getElementById("modalAdicionar")
 const infoContato = document.getElementById("infoContato")
 
 function mostrarModalAdd() {
+    mostrandoModal = true;
     modalAdicionar.style.display = "block";
 };
 
 function fecharModal(event) {
     if (event.target.parentNode.parentNode.id == "conteudoModalAdd") {
+        mostrandoModal = false;
         modalAdicionar.style.display = "none";
     } else if (event.target.parentNode.parentNode.id == "conteudoModalInfo") {
+        mostrandoModal = false;
         modalInformacoes.style.display = "none";
         listaModal.innerHTML = "";
     };
@@ -137,8 +139,10 @@ function fecharModal(event) {
 
 window.onclick = function(event) {
     if (event.target == modalAdicionar) {
+        mostrandoModal = false;
         modalAdicionar.style.display = "none";
     } else if (event.target == modalInformacoes) {
+        mostrandoModal = false;
         modalInformacoes.style.display = "none";
         listaModal.innerHTML = "";
     };

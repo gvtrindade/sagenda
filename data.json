@@ -1,28 +1,33 @@
 {
-    "Gabriel Trindade": {
-        "nome": "Gabriel Trindade",
-        "telefone": "3212-3123",
-        "email": "trindadegabriel@gmail.com",
-        "categoria": "Servidor"
-    },
-    "Matheus Guedes": {
-        "nome": "Matheus Guedes",
-        "telefone": "3654-3123",
-        "email": "guedesmat@hotmail.com",
-        "categoria": "Servidor",
-        "teste": "teste"
-
-    },
-    "Edionay Aguiar": {
-        "nome": "Edionay Aguiar",
-        "telefone": "3212-8765",
-        "email": "eddyboy@gmail.com",
-        "categoria": "Servidor"
-    },
-    "Maria Tereza Córdova": {
-        "nome": "Maria Tereza Córdova",
-        "telefone": "6541-6154",
-        "email": "mariateco@bol.com",
-        "categoria": "SEQUALOG"
-    }
+  "Gabriel Trindade": {
+    "nome": "Gabriel Trindade",
+    "telefone": "3212-3123",
+    "email": "trindadegabriel@gmail.com",
+    "categoria": "Servidor"
+  },
+  "Matheus Guedes": {
+    "nome": "Matheus Guedes",
+    "telefone": "3654-3123",
+    "email": "guedesmat@hotmail.com",
+    "categoria": "Servidor",
+    "teste": "teste"
+  },
+  "Edionay Aguiar": {
+    "nome": "Edionay Aguiar",
+    "telefone": "3212-8765",
+    "email": "eddyboy@gmail.com",
+    "categoria": "Servidor"
+  },
+  "Maria Tereza Córdova": {
+    "nome": "Maria Tereza Córdova",
+    "telefone": "6541-6154",
+    "email": "mariateco@bol.com",
+    "categoria": "SEQUALOG"
+  },
+  "Jorge Trindade": {
+    "nome": "Jorge Trindade",
+    "telefone": "4432-1233",
+    "email": "trijorge@yahoo.com.br",
+    "categoria": "Externo"
+  }
 }
