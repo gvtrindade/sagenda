@@ -63,7 +63,7 @@ function mostrarContatos() {
             let info = document.createElement("li");
             let data = ["nome", "telefone"]
             info.innerText = contatos[i][data[l]];
-            info.className = "Data";
+            info.className = "data";
             contato.appendChild(info);
         };
 
@@ -78,7 +78,7 @@ function mostrarModal(event) {
     let id;
     const listaModal = document.getElementById("listaModal");
 
-    if (event.target.className === "Data") {
+    if (event.target.className === "data") {
         id = event.target.parentNode.id;
     } else {
         id = event.target.id;
@@ -186,27 +186,26 @@ function msgErroCadastrar() {
 //Função de pesquisa
 function pesquisar() {
 
-    let input, filter, content, Info, Class, txtValue;
+    let input, filter, content, Class;
     input = document.getElementById("caixaPesquisa");
     filter = input.value.toUpperCase();
+
     content = document.getElementById("listaContatos");
-    Info = content.getElementsByClassName("contato");
+    const contatosHTML = content.getElementsByClassName("contato");
 
-    for (let j = 0; j < Info.length; j++) {
+    Array.from(contatosHTML).forEach(contatoHTML => contatoHTML.style.display = "none")
 
-        for (let k = 0; k < Info[j].children.length - 1; k++) {
-
-            Class = Info[j].getElementsByClassName("Data")[k];
-            txtValue = Class.textContent || Class.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                Info[j].style.display = "";
-                break;
-            } else {
-                Info[j].style.display = "none";
-            };
-
-        };
-
-    };
+    contatos.forEach((contato, index) => {
+        let chavesEValores = Object.entries(contato)
+        chavesEValores.forEach(chaveEValor => {
+            if (chaveEValor[0] === "categoria") {
+                return
+            }
+            let valor = chaveEValor[1]
+            if (valor.toUpperCase().indexOf(filter) > -1) {
+                contatosHTML[index].style.display = "";
+            }
+        })
+    })
 
 };
