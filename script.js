@@ -59,13 +59,18 @@ function mostrarContatos() {
         contato.onclick = mostrarModal;
         listaContatos.appendChild(contato);
 
-        for (let l = 0; l < 2; l++) {
+        let data = ["nome", "telefone", "email"]
+        for (let l = 0; l < data.length; l++) {
             let info = document.createElement("li");
-            let data = ["nome", "telefone"]
             info.innerText = contatos[i][data[l]];
             info.className = "data";
             contato.appendChild(info);
         };
+
+        if (i !== contatos.length - 1) {
+            let hr = document.createElement("hr");
+            listaContatos.appendChild(hr)
+        }
 
     };
 
@@ -77,6 +82,9 @@ const modalInformacoes = document.getElementById("modalInformacoes")
 function mostrarModal(event) {
     let id;
     const listaModal = document.getElementById("listaModal");
+    const infoContato = document.createElement("div");
+    infoContato.id = "infoContato";
+    listaModal.appendChild(infoContato);
 
     if (event.target.className === "data") {
         id = event.target.parentNode.id;
@@ -89,17 +97,21 @@ function mostrarModal(event) {
     for (let [key, value] of Object.entries(contato)) {
 
         let info
-        if (`${key}` === "nome") {
-            info = document.createElement("h1");
-            info.innerText = `${ value }`;
-            info.style = "text-align: center"
-        } else {
-            info = document.createElement("li");
+        let hr = document.createElement("hr");
+
+        if (`${key}` !== "nome") {
+            info = document.createElement("p");
             let data = `${ key }`.charAt(0).toUpperCase() + `${ key }`.slice(1);
             info.innerText = data + `: ${ value }`;
+            infoContato.appendChild(info);
+        } else {
+            info = document.createElement("h1");
+            info.innerText = `${ value }`;
+            listaModal.insertBefore(hr, listaModal.childNodes[0]);
+            listaModal.insertBefore(info, listaModal.childNodes[0]);
         }
+
         info.className = "data";
-        listaModal.appendChild(info);
 
     };
 
@@ -108,17 +120,17 @@ function mostrarModal(event) {
 
 //Modal para adicionar contato
 const modalAdicionar = document.getElementById("modalAdicionar")
-const listaModal = document.getElementById("listaModal")
+const infoContato = document.getElementById("infoContato")
 
 function mostrarModalAdd() {
     modalAdicionar.style.display = "block";
 };
 
 function fecharModal(event) {
-    let conteudoModal = event.target.parentNode;
-    let modal = conteudoModal.parentNode.id;
-    document.getElementById(modal).style.display = "none";
-    if (modal === "modalInformacoes") {
+    if (event.target.parentNode.parentNode.id == "conteudoModalAdd") {
+        modalAdicionar.style.display = "none";
+    } else if (event.target.parentNode.parentNode.id == "conteudoModalInfo") {
+        modalInformacoes.style.display = "none";
         listaModal.innerHTML = "";
     };
 };

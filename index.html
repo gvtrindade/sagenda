@@ -12,11 +12,11 @@
 <body onfocus="selecionarPesquisa()">
 
     <div class="header">
-        <button class="botao" id="botaoMenu">
+        <!-- <button class="botao" id="botaoMenu">
             <img src="./Assets/Icones/menu.svg">  
-        </button>
+        </button> -->
         <div class="pesquisa">
-            <input type="search" id="caixaPesquisa" onkeyup="pesquisar()">
+            <input type="search" id="caixaPesquisa" onkeyup="pesquisar()" placeholder="Pesquisar">
             <button class="botao" id="botaoPesquisar">            
                 <img src="./Assets/Icones/procurar.svg"> 
             </button>
@@ -27,6 +27,7 @@
         <div id="titulos">
             <h1>Nome</h1>
             <h1>Telefone</h1>
+            <h1>Email</h1>
         </div>
         <ul id="listaContatos"></ul>
     </div>
@@ -39,38 +40,54 @@
 
     <div class="modal" id="modalInformacoes">
         <div class="conteudoModal" id="conteudoModalInfo">
-            <button class="botao" onclick="fecharModal(event)">X</button>
-            <ul id="listaModal"></ul>
+            <button class="botaoFechar" onclick="fecharModal(event)">
+                <img class="iconeFechar" src="./Assets/Icones/adicionar.svg"> 
+            </button>
+            <div id="listaModal"></div>
         </div>
     </div>
 
     <div class="modal" id="modalAdicionar">
         <div class="conteudoModal" id="conteudoModalAdd">
 
-            <button class="botao" onclick="fecharModal(event)">X</button>
+            <button class="botaoFechar" onclick="fecharModal(event)">
+                <img class="iconeFechar" src="./Assets/Icones/adicionar.svg"> 
+            </button>
+
+            <h1>Adicionar Contato</h1>
+            <hr>
 
             <form>
-                <h1>Adicionar Contato</h1>
+                <div id="camposModalAdd">
+                    <div class="campo">
+                        <label for="nomeContato">Nome:</label>
+                        <input class="textoInput" id="nomeContato" type="text" required="true">
+                    </div>
 
-                <label>Nome:</label>
-                <input id="nomeContato" type="text" required="true">
+                    <div class="campo">
+                        <label for="telefoneContato">Telefone:</label>
+                        <input class="textoInput" id="telefoneContato" type="text">
 
-                <label>Telefone:</label>
-                <input id="telefoneContato" type="text">
+                    </div>
 
-                <label>Email:</label>
-                <input id="emailContato" type="text">
+                    <div class="campo">
+                        <label for="emailContato">Email:</label>
+                        <input class="textoInput" id="emailContato" type="text">
+                    </div>
 
-                <label>Categoria:</label>
-                <select id="categoriaContato" autocomplete="off" required="true">
-                    <option value="">Selecione...</option>
-                    <option value="SEQUALOG">SEQUALOG</option>
-                    <option value="Senado" selected>Senado</option>
-                    <option value="Externo">Externo</option>
-                </select>
+                    <div class="campo">
+                        <label for="categoriaContato">Categoria:</label>
+                        <select class="textoInput" id="categoriaContato" autocomplete="off" required="true">
+                            <option value="">Selecione...</option>
+                            <option value="SEQUALOG">SEQUALOG</option>
+                            <option value="Senado" selected>Senado</option>
+                            <option value="Externo">Externo</option>
+                        </select>
+                    </div>
+                </div>
             </form>
 
-            <button class="botao" onclick="salvarContato()">Salvar</button>
+            <button class="botaoSalvar" onclick="salvarContato()">Salvar</button>
         </div>
     </div>
 

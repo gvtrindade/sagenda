@@ -13,6 +13,11 @@ li {
     list-style-type: none;
 }
 
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
 img {
     height: 100%;
     width: 100%;
@@ -21,8 +26,19 @@ img {
     color: white;
 }
 
+hr {
+    width: 96%;
+    border-top: 1px solid #512B58;
+}
+
+.botao {
+    outline: none;
+}
+
 .data {
     width: 100%;
+    text-align: center;
+    font-size: larger;
 }
 
 .header {
@@ -38,14 +54,16 @@ img {
 }
 
 .pesquisa {
+    display: flex;
     right: 5vh;
     position: absolute;
 }
 
-.botao {
-    padding: 0;
+#botaoPesquisar {
+    height: 30px;
+    width: 30px;
+    background-color: #512B58;
     border: 0;
-    background: transparent;
 }
 
 #botaoMenu {
@@ -53,10 +71,6 @@ img {
     width: 40px;
     position: relative;
     margin: 5vh;
-}
-
-.botao:hover {
-    cursor: pointer;
 }
 
 #botaoAdicionar {
@@ -67,22 +81,20 @@ img {
     right: 5%;
     background-color: #512B58;
     border-radius: 50%;
+    border: 0;
 }
 
 #botaoAdicionar:hover {
     background-color: rgb(114, 79, 121);
-}
-
-#botaoPesquisar {
-    height: 30px;
-    width: 30px;
+    cursor: pointer;
 }
 
 .conteudo {
     position: relative;
     background-color: #F1F3F4;
-    margin: 0 23%;
+    margin: 0 15%;
     top: 60px;
+    padding-bottom: 1px;
 }
 
 #titulos {
@@ -102,7 +114,7 @@ img {
 }
 
 .contato:hover {
-    background-color: grey;
+    background-color: rgb(185, 187, 187);
     cursor: pointer;
 }
 
@@ -121,15 +133,99 @@ img {
     background-color: white;
     padding: 5px;
     width: 30%;
-    height: 74%;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 5px;
 }
 
 #listaModal {
     display: flex;
     flex-wrap: wrap;
+    padding: 0 0 15px 0;
+}
+
+#listaModal h1 {
+    font-size: xx-large;
+}
+
+#infoContato {
+    text-align: center;
+    width: 100%;
+}
+
+#infoContato .data {
     padding: 0;
 }
+
+.botaoFechar {
+    background-color: #512B58;
+    border: 0;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    border-radius: 5px;
+}
+
+.botaoFechar:hover {
+    background-color: rgb(114, 79, 121);
+    cursor: pointer;
+}
+
+.iconeFechar {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    transform: rotate(45deg);
+}
+
+.botaoSalvar {
+    left: 50%;
+    position: relative;
+    transform: translate(-50%);
+    margin: 20px 0;
+    font-size: large;
+    background-color: #512B58;
+    color: white;
+    border: 0;
+    padding: 5px 15px;
+}
+
+.botaoSalvar:hover {
+    background-color: rgb(114, 79, 121);
+    cursor: pointer;
+}
+
+#camposModalAdd {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#camposModalAdd label {
+    font-size: large;
+}
+
+.campo {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.campo * {
+    width: 60%;
+}
+
+.textoInput {
+    border: 1px solid darkgray;
+    padding: 5px;
+    font-size: larger;
+}
+
+#categoriacontato {}
