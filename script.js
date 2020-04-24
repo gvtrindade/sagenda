@@ -65,11 +65,6 @@ function mostrarContatos() {
             contato.appendChild(info);
         };
 
-        if (i !== contatos.length - 1) {
-            let hr = document.createElement("hr");
-            listaContatos.appendChild(hr)
-        }
-
     };
 
 };

@@ -26,11 +26,6 @@ img {
     color: white;
 }
 
-hr {
-    width: 96%;
-    border-top: 1px solid #512B58;
-}
-
 .botao {
     outline: none;
 }
@@ -111,6 +106,11 @@ hr {
 
 #listaContatos {
     padding: 0;
+}
+
+.contato {
+    border-top: 1px solid #512B58;
+    border-width: 96%;
 }
 
 .contato:hover {

@@ -29,5 +29,29 @@
     "telefone": "4432-1233",
     "email": "trijorge@yahoo.com.br",
     "categoria": "Externo"
+  },
+  "Pedro Pellegrino": {
+    "nome": "Pedro Pellegrino",
+    "telefone": "998091009",
+    "email": "pedro.pellegrino@grupoflug.com",
+    "categoria": "Externo"
+  },
+  "Guedes": {
+    "nome": "Guedes",
+    "telefone": "3",
+    "email": "matheus.guedes@concretaconsultoria.com.br",
+    "categoria": "SEQUALOG"
+  },
+  "Joana Aguiar": {
+    "nome": "Joana Aguiar",
+    "telefone": "Eduinay",
+    "email": "234234jlk3j",
+    "categoria": "Senado"
+  },
+  "sdfgs": {
+    "nome": "sdfgs",
+    "telefone": "ioj",
+    "email": "ioj",
+    "categoria": "SEQUALOG"
   }
 }
