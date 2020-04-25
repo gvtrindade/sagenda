@@ -26,7 +26,12 @@ img {
     color: white;
 }
 
-.botao {
+hr {
+    border-top: 1px solid #512B58;
+    width: 96%;
+}
+
+button {
     outline: none;
 }
 
@@ -156,6 +161,17 @@ img {
 }
 
 #infoContato .data {
+    padding: 0;
+}
+
+.botaoDeletar {
+    background-color: transparent;
+    position: relative;
+    top: 5px;
+    right: 5px;
+    border: 0;
+    height: 30px;
+    width: 30px;
     padding: 0;
 }
 

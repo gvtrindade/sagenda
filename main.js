@@ -16,7 +16,7 @@ function createWindow() {
 
     // win.webContents.openDevTools()
 
-    win.removeMenu();
+    // win.removeMenu();
 }
 
 app.whenReady().then(createWindow)

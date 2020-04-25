@@ -43,6 +43,9 @@
             <button class="botaoFechar" onclick="fecharModal(event)">
                 <img class="iconeFechar" src="./Assets/Icones/adicionar.svg"> 
             </button>
+            <button class="botaoDeletar" id="botaoDeletarModal" onblur="resetarEstado()" onclick="deletarContato(event)">
+                <img class="iconeDeletar" id="iconeDeletarModal"src="./Assets/Icones/lixeira.svg"> 
+            </button>
             <div id="listaModal"></div>
         </div>
     </div>
