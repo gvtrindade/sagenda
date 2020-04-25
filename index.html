@@ -2,24 +2,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Agenda SEQUALOG</title>
 </head>
 
 <body>
-
     <div class="header">
         <!-- <button class="botao" id="botaoMenu">
             <img src="./Assets/Icones/menu.svg">  
         </button> -->
         <div class="pesquisa">
-            <input type="search" id="caixaPesquisa" onkeyup="pesquisar()" placeholder="Pesquisar">
-            <button class="botao" id="botaoPesquisar">            
-                <img src="./Assets/Icones/procurar.svg"> 
-            </button>
+            <input type="search" id="caixaPesquisa" onkeyup="pesquisar()" placeholder="Pesquisar" />
+            <button class="botao" id="botaoPesquisar">
+          <img src="./Assets/Icones/procurar.svg" />
+        </button>
+        </div>
+    </div>
+
+    <div class="menu">
+        <div id="categorias">
+            <h2>SEQUALOG</h2>
+            <h2>Senado</h2>
+            <h2>Externo</h2>
         </div>
     </div>
 
@@ -34,58 +41,60 @@
 
     <div class="botaoAdicionar">
         <button class="botao" id="botaoAdicionar" onclick="mostrarModalAdd()">
-            <img src="./Assets/Icones/adicionar.svg"> 
-        </button>
+        <img src="./Assets/Icones/adicionar.svg" />
+      </button>
     </div>
 
     <div class="modal" id="modalInformacoes">
         <div class="conteudoModal" id="conteudoModalInfo">
             <button class="botaoFechar" onclick="fecharModal(event)">
-                <img class="iconeFechar" src="./Assets/Icones/adicionar.svg"> 
-            </button>
+          <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" />
+        </button>
             <button class="botaoDeletar" id="botaoDeletarModal" onblur="resetarEstado()" onclick="deletarContato(event)">
-                <img class="iconeDeletar" id="iconeDeletarModal"src="./Assets/Icones/lixeira.svg"> 
-            </button>
+          <img
+            class="iconeDeletar"
+            id="iconeDeletarModal"
+            src="./Assets/Icones/lixeira.svg"
+          />
+        </button>
             <div id="listaModal"></div>
         </div>
     </div>
 
     <div class="modal" id="modalAdicionar">
         <div class="conteudoModal" id="conteudoModalAdd">
-
             <button class="botaoFechar" onclick="fecharModal(event)">
-                <img class="iconeFechar" src="./Assets/Icones/adicionar.svg"> 
-            </button>
+          <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" />
+        </button>
 
             <h1>Adicionar Contato</h1>
-            <hr>
+            <hr />
 
             <form>
                 <div id="camposModalAdd">
                     <div class="campo">
                         <label for="nomeContato">Nome:</label>
-                        <input class="textoInput" id="nomeContato" type="text" required="true">
+                        <input class="textoInput" id="nomeContato" type="text" required="true" />
                     </div>
 
                     <div class="campo">
                         <label for="telefoneContato">Telefone:</label>
-                        <input class="textoInput" id="telefoneContato" type="text">
-
+                        <input class="textoInput" id="telefoneContato" type="text" />
                     </div>
 
                     <div class="campo">
                         <label for="emailContato">Email:</label>
-                        <input class="textoInput" id="emailContato" type="text">
+                        <input class="textoInput" id="emailContato" type="text" />
                     </div>
 
                     <div class="campo">
                         <label for="categoriaContato">Categoria:</label>
                         <select class="textoInput" id="categoriaContato" autocomplete="off" required="true">
-                            <option value="">Selecione...</option>
-                            <option value="SEQUALOG">SEQUALOG</option>
-                            <option value="Senado" selected>Senado</option>
-                            <option value="Externo">Externo</option>
-                        </select>
+                <option value="">Selecione...</option>
+                <option value="SEQUALOG">SEQUALOG</option>
+                <option value="Senado" selected>Senado</option>
+                <option value="Externo">Externo</option>
+              </select>
                     </div>
                 </div>
             </form>
@@ -94,10 +103,7 @@
         </div>
     </div>
 
-
     <script src="script.js"></script>
-
-
 </body>
 
 </html>

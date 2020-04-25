@@ -3,10 +3,9 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 0 110px 0;
     padding: 0;
-    height: 100hv;
-    width: 100hv;
+    display: flex;
 }
 
 li {
@@ -89,12 +88,21 @@ button {
     cursor: pointer;
 }
 
+.menu {
+    position: relative;
+    left: 0;
+    top: 60px;
+    background: green;
+    padding: 0 10px;
+}
+
 .conteudo {
     position: relative;
     background-color: #F1F3F4;
-    margin: 0 15%;
+    /* margin: 0 15%; */
     top: 60px;
     padding-bottom: 1px;
+    width: 100%;
 }
 
 #titulos {
