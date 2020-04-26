@@ -1,18 +1,30 @@
 {
     "name": "agendasequalog",
     "version": "1.0.0",
-    "description": "",
+    "description": "Um app para armazenamento de contatos da SEQUALOG",
     "main": "main.js",
     "scripts": {
-        "start": "electron ."
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
     },
-    "keywords": [],
-    "author": "",
+    "keywords": ["Agenda", "Organização", "Controle"],
+    "author": "Gabriel Trindade",
     "license": "ISC",
     "devDependencies": {
-        "electron": "^8.2.3"
+        "electron": "^8.2.3",
+        "electron-builder": "^22.5.1"
     },
     "dependencies": {
         "edit-json-file": "^1.4.0"
+    },
+    "build": {
+        "appId": "agendasequalog",
+        "win": {
+            "target": "portable"
+        },
+        "directories": {
+            "output": "release-builds/"
+        }
     }
 }

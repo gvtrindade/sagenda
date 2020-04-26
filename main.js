@@ -9,6 +9,9 @@ function createWindow() {
             nodeIntegration: true
         },
         center: true,
+        minWidth: 1024,
+        minHeight: 600
+
     })
 
     // e carregar o index.html do aplicativo.

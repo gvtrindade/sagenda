@@ -3,18 +3,30 @@
 }
 
 body {
-    margin: 0 0 110px 0;
+    margin: 0;
     padding: 0;
     display: flex;
+    height: 100%;
+    width: 100%;
 }
 
 li {
     list-style-type: none;
 }
 
+hr {
+    border: 1px solid #512B58;
+    width: 68%;
+}
+
 h1 {
     width: 100%;
     text-align: center;
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
 }
 
 img {
@@ -23,11 +35,6 @@ img {
     margin: 0;
     padding: 0;
     color: white;
-}
-
-hr {
-    border-top: 1px solid #512B58;
-    width: 96%;
 }
 
 button {
@@ -89,11 +96,39 @@ button {
 }
 
 .menu {
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
+    width: 200px;
     left: 0;
     top: 60px;
-    background: green;
-    padding: 0 10px;
+    background-color: rgb(239, 240, 240);
+    border-right: 1px solid rgba(114, 79, 121, 0.1);
+}
+
+#categorias {
+    margin-top: 5px;
+}
+
+.botaoCategoria {
+    text-align: left;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 10px;
+}
+
+.botaoCategoria.selecionada {
+    background-color: black;
+}
+
+.botaoCategoria:hover {
+    cursor: pointer;
+    background-color: rgb(212, 212, 212);
+}
+
+.botaoCategoria:focus {
+    background-color: rgb(212, 212, 212);
 }
 
 .conteudo {
@@ -103,6 +138,12 @@ button {
     top: 60px;
     padding-bottom: 1px;
     width: 100%;
+}
+
+.botoesModal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
 }
 
 #titulos {
@@ -122,13 +163,19 @@ button {
 }
 
 .contato {
-    border-top: 1px solid #512B58;
+    border-top: 1px solid rgba(81, 43, 88, 0.20);
     border-width: 96%;
 }
 
 .contato:hover {
-    background-color: rgb(185, 187, 187);
+    background-color: rgb(212, 212, 212);
     cursor: pointer;
+}
+
+#resultadoPesquisa {
+    border-top: 1px solid rgba(81, 43, 88, 0.20);
+    text-align: center;
+    padding: 8px;
 }
 
 .modal {
@@ -140,6 +187,7 @@ button {
     background-color: rgba(0, 0, 0, 0.4);
     top: 0;
     left: 0;
+    transition: display 2s ease-in;
 }
 
 .conteudoModal {
@@ -178,9 +226,10 @@ button {
     top: 5px;
     right: 5px;
     border: 0;
-    height: 30px;
-    width: 30px;
-    padding: 0;
+    height: 35px;
+    width: 35px;
+    padding: 1px;
+    border-radius: 5px;
 }
 
 .botaoFechar {
@@ -251,5 +300,3 @@ button {
     padding: 5px;
     font-size: larger;
 }
-
-#categoriacontato {}

@@ -141,12 +141,24 @@ function fecharModal(event) {
     if (event.target.parentNode.parentNode.id == "conteudoModalAdd") {
         mostrandoModal = false;
         modalAdicionar.style.display = "none";
-    } else if (event.target.parentNode.parentNode.id == "conteudoModalInfo") {
+    } else if (event.target.parentNode.parentNode.parentNode.id == "conteudoModalInfo") {
         mostrandoModal = false;
         modalInformacoes.style.display = "none";
         listaModal.innerHTML = "";
     }
-}
+};
+
+//Fechar modais ao clicar fora deles
+window.onclick = function(event) {
+    if (event.target == modalAdicionar) {
+        mostrandoModal = false;
+        modalAdicionar.style.display = "none";
+    } else if (event.target == modalInformacoes) {
+        mostrandoModal = false;
+        modalInformacoes.style.display = "none";
+        listaModal.innerHTML = "";
+    }
+};
 
 //Adicionar contato
 function Contato(nome, telefone, email, categoria) {
@@ -157,36 +169,51 @@ function Contato(nome, telefone, email, categoria) {
 }
 
 function salvarContato() {
+    let nomeDuplicado = false;
     if (msgErroCadastrar() === true) {
         alert("Existem campos vazios!");
         return;
     }
 
-    let contato = new Contato(
-        nomeContato.value,
-        telefoneContato.value,
-        emailContato.value,
-        categoriaContato.value
-    );
+    debugger
 
-    let nomeObjContato = nomeContato.value;
+    contatos.forEach((contato) => {
+        if (nomeContato.value === contato.nome) {
+            nomeDuplicado = true;
+        }
+    });
 
-    contatos.push(contato);
-    contatos.sort(ordemAlfabetica);
-    arquivo.set(nomeObjContato, contato);
-    arquivo.save();
+    if (nomeDuplicado === true) {
+        alert("Um contato com este nome já existe.");
+        return;
+    } else {
+        let contato = new Contato(
+            nomeContato.value,
+            telefoneContato.value,
+            emailContato.value,
+            categoriaContato.value
+        );
 
-    limparModalAdd();
-    mostrarContatos();
-    modalAdicionar.style.display = "none";
-}
+        let nomeObjContato = nomeContato.value;
+
+        contatos.push(contato);
+        contatos.sort(ordemAlfabetica);
+        arquivo.set(nomeObjContato, contato);
+        arquivo.save();
+
+        limparModalAdd();
+        mostrarContatos();
+        modalAdicionar.style.display = "none";
+    };
+};
 
 //Deletar contato
 const botaoDeletarModal = document.getElementById("botaoDeletarModal");
+const iconeDeletarModal = document.getElementById("iconeDeletarModal");
 let contadorCliques = false;
 
 function deletarContato(event) {
-    const conteudoModalInfo = event.target.parentNode.parentNode;
+    const conteudoModalInfo = event.target.parentNode.parentNode.parentNode;
     const indexNome = conteudoModalInfo.children.length - 1;
     const listaModal = conteudoModalInfo.children[indexNome];
     let nomeContatoDeletado = listaModal.firstChild.innerText;
@@ -194,6 +221,7 @@ function deletarContato(event) {
 
     if (contadorCliques === false) {
         botaoDeletarModal.style.backgroundColor = "red";
+        iconeDeletarModal.style.filter = "invert(1)";
         contadorCliques = true;
     } else if (contadorCliques === true) {
         contatos.forEach((contato, index) => {
@@ -211,12 +239,14 @@ function deletarContato(event) {
         fecharModal(event);
 
         botaoDeletarModal.style.backgroundColor = "transparent";
+        iconeDeletarModal.style.filter = "invert(0)";
         contadorCliques = false;
     }
 }
 
 function resetarEstado() {
     botaoDeletarModal.style.backgroundColor = "transparent";
+    iconeDeletarModal.style.filter = "invert(0)";
     contadorCliques = false;
 }
 
@@ -234,14 +264,59 @@ function msgErroCadastrar() {
         return true;
     }
 }
+//Função filtro
+
+function filtrarCategoria(event) {
+
+    let contatosMostrados = 0;
+    let categoria = event.target;
+    const listacontatos = document.getElementById("listaContatos");
+    const contatosHTML = listacontatos.getElementsByClassName("contato");
+    const resultadoPesquisa = document.getElementById("resultadoPesquisa");
+    let input = document.getElementById("caixaPesquisa");
+
+    input.value = ""
+
+    // categoria.classList.add("selecionada")
+
+    // console.log(categoria)
+
+    Array.from(contatosHTML).forEach(
+        (contatoHTML) => (contatoHTML.style.display = "none")
+    );
+
+    if (categoria.innerText === "Todos") {
+        Array.from(contatosHTML).forEach(
+            (contatoHTML) => (contatoHTML.style.display = "")
+        );
+        resultadoPesquisa.style.display = "none";
+        return;
+    }
+
+    contatos.forEach((contato, index) => {
+        if (contato.categoria === categoria.innerText) {
+            contatosHTML[index].style.display = "";
+            contatosMostrados += 1;
+        };
+    });
+
+    if (contatosMostrados === 0) {
+        resultadoPesquisa.style.display = "block";
+        resultadoPesquisa.innerText = "Não existem registrados contatos nesta categoria";
+    } else {
+        resultadoPesquisa.style.display = "none";
+    }
+
+};
 
 //Função de pesquisa
 function pesquisar() {
-    let input, filter, content, Class;
-    input = document.getElementById("caixaPesquisa");
-    filter = input.value.toUpperCase();
 
-    content = document.getElementById("listaContatos");
+    let contatosMostrados = 0;
+    let input = document.getElementById("caixaPesquisa");
+    let filter = input.value.toUpperCase();
+
+    let content = document.getElementById("listaContatos");
     const contatosHTML = content.getElementsByClassName("contato");
 
     Array.from(contatosHTML).forEach(
@@ -250,6 +325,7 @@ function pesquisar() {
 
     contatos.forEach((contato, index) => {
         let chavesEValores = Object.entries(contato);
+
         chavesEValores.forEach((chaveEValor) => {
             if (chaveEValor[0] === "categoria") {
                 return;
@@ -257,18 +333,15 @@ function pesquisar() {
             let valor = chaveEValor[1];
             if (valor.toUpperCase().indexOf(filter) > -1) {
                 contatosHTML[index].style.display = "";
+                contatosMostrados += 1;
             }
         });
     });
-}
 
-window.onclick = function(event) {
-    if (event.target == modalAdicionar) {
-        mostrandoModal = false;
-        modalAdicionar.style.display = "none";
-    } else if (event.target == modalInformacoes) {
-        mostrandoModal = false;
-        modalInformacoes.style.display = "none";
-        listaModal.innerHTML = "";
+    if (contatosMostrados === 0) {
+        resultadoPesquisa.innerText = "Busca sem resultados";
+        resultadoPesquisa.style.display = "block"
+    } else {
+        resultadoPesquisa.style.display = "none"
     }
 };

@@ -24,9 +24,18 @@
 
     <div class="menu">
         <div id="categorias">
-            <h2>SEQUALOG</h2>
-            <h2>Senado</h2>
-            <h2>Externo</h2>
+            <button class="botaoCategoria" onclick="filtrarCategoria(event)" value="Todos">
+                <h2>Todos</h2>
+            </button>
+            <button class="botaoCategoria" onclick="filtrarCategoria(event)" value="SEQUALOG">
+                <h2>SEQUALOG</h2>
+            </button>
+            <button class="botaoCategoria" onclick="filtrarCategoria(event)" value="Senado">
+                <h2>Senado</h2>
+            </button>
+            <button class="botaoCategoria" onclick="filtrarCategoria(event)" value="Externo">
+                <h2>Externo</h2>
+            </button>
         </div>
     </div>
 
@@ -37,6 +46,8 @@
             <h1>Email</h1>
         </div>
         <ul id="listaContatos"></ul>
+        <div id="resultadoPesquisa" style="display: none"></div>
+
     </div>
 
     <div class="botaoAdicionar">
@@ -47,16 +58,18 @@
 
     <div class="modal" id="modalInformacoes">
         <div class="conteudoModal" id="conteudoModalInfo">
-            <button class="botaoFechar" onclick="fecharModal(event)">
+            <div class="botoesModal">
+                <button class="botaoFechar" onclick="fecharModal(event)">
           <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" />
         </button>
-            <button class="botaoDeletar" id="botaoDeletarModal" onblur="resetarEstado()" onclick="deletarContato(event)">
+                <button class="botaoDeletar" id="botaoDeletarModal" onblur="resetarEstado()" onclick="deletarContato(event)">
           <img
             class="iconeDeletar"
             id="iconeDeletarModal"
             src="./Assets/Icones/lixeira.svg"
           />
         </button>
+            </div>
             <div id="listaModal"></div>
         </div>
     </div>
@@ -79,7 +92,7 @@
 
                     <div class="campo">
                         <label for="telefoneContato">Telefone:</label>
-                        <input class="textoInput" id="telefoneContato" type="text" />
+                        <input class="textoInput" id="telefoneContato" type="tel" />
                     </div>
 
                     <div class="campo">
