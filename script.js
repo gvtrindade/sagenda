@@ -64,6 +64,7 @@ function limparModalAdd() {
     telefoneContato.value = "";
     emailContato.value = "";
     categoriaContato.value = "";
+    campoSetor.children[2].value = "";
 }
 
 //Mostrar lista de contatos
@@ -213,7 +214,7 @@ function salvarContato() {
             telefoneContato.value,
             emailContato.value,
             categoriaContato.value,
-            campoSetor.children[1].value
+            campoSetor.children[2].value
         );
 
         let nomeObjContato = nomeContato.value;
@@ -325,7 +326,7 @@ function filtrarCategoria(event) {
 
     if (contatosMostrados === 0) {
         resultadoPesquisa.style.display = "block";
-        resultadoPesquisa.innerText = "Não existem registrados contatos nesta categoria";
+        resultadoPesquisa.innerText = "Não existem contatos registrados nesta categoria";
     } else {
         resultadoPesquisa.style.display = "none";
     }
