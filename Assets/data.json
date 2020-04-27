@@ -75,6 +75,14 @@
         "nome": "Ari Cardoso da Silva",
         "telefone": "4069",
         "email": "aricar@senado.gov.br",
-        "categoria": "SEQUALOG"
+        "categoria": "SEQUALOG",
+        "setor": ""
+    },
+    "Jorge Trindade": {
+        "nome": "Jorge Trindade",
+        "telefone": "3213",
+        "email": "",
+        "categoria": "Senado",
+        "setor": "SPOL"
     }
 }

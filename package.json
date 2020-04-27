@@ -1,6 +1,6 @@
 {
     "name": "agendasequalog",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Um app para armazenamento de contatos da SEQUALOG",
     "main": "main.js",
     "scripts": {
@@ -21,7 +21,8 @@
     "build": {
         "appId": "agendasequalog",
         "win": {
-            "target": "portable"
+            "target": "portable",
+            "icon": "./Assets/Icones/icone.ico"
         },
         "directories": {
             "output": "release-builds/"

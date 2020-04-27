@@ -1,6 +1,6 @@
 //Inserir dados da base em um array
 const editJsonFile = require("edit-json-file");
-let arquivo = editJsonFile("./data.json");
+let arquivo = editJsonFile("./Assets/data.json");
 let objContatos = arquivo.data;
 let arrayDados = Object.entries(objContatos);
 let contatosNaoFiltrados = [];
@@ -54,6 +54,7 @@ const nomeContato = document.getElementById("nomeContato");
 const telefoneContato = document.getElementById("telefoneContato");
 const emailContato = document.getElementById("emailContato");
 const categoriaContato = document.getElementById("categoriaContato");
+const campoSetor = document.getElementById("campoSetor");
 let mostrandoModal = false;
 
 //Limpar modal de adicionar
@@ -115,12 +116,15 @@ function mostrarModal(event) {
             let data = `${key}`.charAt(0).toUpperCase() + `${key}`.slice(1);
             info.innerText = data + `: ${value}`;
             infoContato.appendChild(info);
+            if (info.innerText === "Setor: ") {
+                infoContato.removeChild(info);
+            };
         } else {
             info = document.createElement("h1");
             info.innerText = `${value}`;
             listaModal.insertBefore(hr, listaModal.childNodes[0]);
             listaModal.insertBefore(info, listaModal.childNodes[0]);
-        }
+        };
 
         info.className = "data";
     }
@@ -159,6 +163,12 @@ window.onclick = function(event) {
         modalInformacoes.style.display = "none";
         listaModal.innerHTML = "";
     }
+
+    if (categoriaContato.value === "Senado") {
+        campoSetor.style.display = "block";
+    } else {
+        campoSetor.style.display = "none";
+    }
 };
 
 window.onkeyup = function(event) {
@@ -172,21 +182,21 @@ window.onkeyup = function(event) {
 };
 
 //Adicionar contato
-function Contato(nome, telefone, email, categoria) {
+function Contato(nome, telefone, email, categoria, setor) {
     this.nome = nome;
     this.telefone = telefone;
     this.email = email;
     this.categoria = categoria;
+    this.setor = setor;
 }
 
 function salvarContato() {
     let nomeDuplicado = false;
+
     if (msgErroCadastrar() === true) {
         alert("Existem campos vazios!");
         return;
     }
-
-    debugger
 
     contatos.forEach((contato) => {
         if (nomeContato.value === contato.nome) {
@@ -202,7 +212,8 @@ function salvarContato() {
             nomeContato.value,
             telefoneContato.value,
             emailContato.value,
-            categoriaContato.value
+            categoriaContato.value,
+            campoSetor.children[1].value
         );
 
         let nomeObjContato = nomeContato.value;

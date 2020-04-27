@@ -336,6 +336,15 @@ button {
     width: 60%;
 }
 
+#campoSetor {
+    text-align: left;
+    width: 100%;
+}
+
+#campoSetor * {
+    width: 94%;
+}
+
 .textoInput {
     border: 1px solid darkgray;
     padding: 5px;
