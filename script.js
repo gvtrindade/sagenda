@@ -126,14 +126,15 @@ function mostrarModal(event) {
     }
 
     modalInformacoes.style.display = "block";
+    modalInformacoes.classList.add("fadeIn");
 }
 
 //Modal para adicionar contato
 const modalAdicionar = document.getElementById("modalAdicionar");
-const infoContato = document.getElementById("infoContato");
 
 function mostrarModalAdd() {
     mostrandoModal = true;
+    modalAdicionar.classList.add("fadeIn");
     modalAdicionar.style.display = "block";
 }
 
@@ -158,6 +159,16 @@ window.onclick = function(event) {
         modalInformacoes.style.display = "none";
         listaModal.innerHTML = "";
     }
+};
+
+window.onkeyup = function(event) {
+    if (event.key == "Escape") {
+        mostrandoModal = false;
+        modalAdicionar.style.display = "none";
+        mostrandoModal = false;
+        modalInformacoes.style.display = "none";
+        listaModal.innerHTML = "";
+    };
 };
 
 //Adicionar contato
@@ -213,7 +224,8 @@ const iconeDeletarModal = document.getElementById("iconeDeletarModal");
 let contadorCliques = false;
 
 function deletarContato(event) {
-    const conteudoModalInfo = event.target.parentNode.parentNode.parentNode;
+    const botaoDeletarModal = event.target.parentNode
+    const conteudoModalInfo = botaoDeletarModal.parentNode.parentNode;
     const indexNome = conteudoModalInfo.children.length - 1;
     const listaModal = conteudoModalInfo.children[indexNome];
     let nomeContatoDeletado = listaModal.firstChild.innerText;
@@ -242,11 +254,15 @@ function deletarContato(event) {
         iconeDeletarModal.style.filter = "invert(0)";
         contadorCliques = false;
     }
-}
+
+    botaoDeletarModal.classList.add("fadeIn");
+
+};
 
 function resetarEstado() {
     botaoDeletarModal.style.backgroundColor = "transparent";
     iconeDeletarModal.style.filter = "invert(0)";
+    botaoDeletarModal.classList.remove("fadeIn");
     contadorCliques = false;
 }
 
@@ -276,10 +292,6 @@ function filtrarCategoria(event) {
     let input = document.getElementById("caixaPesquisa");
 
     input.value = ""
-
-    // categoria.classList.add("selecionada")
-
-    // console.log(categoria)
 
     Array.from(contatosHTML).forEach(
         (contatoHTML) => (contatoHTML.style.display = "none")

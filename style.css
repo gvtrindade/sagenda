@@ -8,6 +8,7 @@ body {
     display: flex;
     height: 100%;
     width: 100%;
+    background-color: #F1F3F4;
 }
 
 li {
@@ -61,7 +62,7 @@ button {
 
 .pesquisa {
     display: flex;
-    right: 5vh;
+    right: 2%;
     position: absolute;
 }
 
@@ -98,8 +99,9 @@ button {
 .menu {
     display: flex;
     flex-wrap: wrap;
-    position: relative;
+    position: fixed;
     width: 200px;
+    height: 100%;
     left: 0;
     top: 60px;
     background-color: rgb(239, 240, 240);
@@ -134,16 +136,11 @@ button {
 .conteudo {
     position: relative;
     background-color: #F1F3F4;
-    /* margin: 0 15%; */
+    margin: 0 0 0 201px;
     top: 60px;
     padding-bottom: 1px;
     width: 100%;
-}
-
-.botoesModal {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
+    height: 100%;
 }
 
 #titulos {
@@ -155,16 +152,19 @@ button {
     list-style-type: none;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     padding: 5px;
 }
 
 #listaContatos {
     padding: 0;
+    margin: 0;
 }
 
 .contato {
     border-top: 1px solid rgba(81, 43, 88, 0.20);
     border-width: 96%;
+    user-select: none;
 }
 
 .contato:hover {
@@ -176,6 +176,24 @@ button {
     border-top: 1px solid rgba(81, 43, 88, 0.20);
     text-align: center;
     padding: 8px;
+}
+
+#logo {
+    border-top: 1px solid rgba(81, 43, 88, 0.20);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 40px 0;
+}
+
+#logo * {
+    user-select: none;
+}
+
+.iconeLogo {
+    height: 30px;
+    width: 30px;
+    margin: 0 3px;
 }
 
 .modal {
@@ -190,15 +208,34 @@ button {
     transition: display 2s ease-in;
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.modal.fadeIn {
+    animation: fadeIn 0.2s ease-in-out;
+}
+
 .conteudoModal {
     background-color: white;
     padding: 5px;
-    width: 30%;
+    width: 370px;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5px;
+}
+
+.botoesModal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
 }
 
 #listaModal {
@@ -230,6 +267,10 @@ button {
     width: 35px;
     padding: 1px;
     border-radius: 5px;
+}
+
+.botaoDeletar.fadeIn {
+    animation: fadeIn 0.3s linear;
 }
 
 .botaoFechar {

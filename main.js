@@ -10,7 +10,8 @@ function createWindow() {
         },
         center: true,
         minWidth: 1024,
-        minHeight: 600
+        minHeight: 600,
+        icon: __dirname + "/Assets/Icones/agenda.png"
 
     })
 
@@ -19,7 +20,7 @@ function createWindow() {
 
     // win.webContents.openDevTools()
 
-    // win.removeMenu();
+    win.removeMenu();
 }
 
 app.whenReady().then(createWindow)
