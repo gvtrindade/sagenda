@@ -131,6 +131,18 @@
     <div class="modal" id="modalConfirmarAcao" style="display: none;">
         <div class="conteudoModal" id="conteudoModalConf">
             <span>Você deseja confirmar esta ação?</span>
+            <br>
+            <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Sim">Sim</button>
+            <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Não">Não</button>
+        </div>
+    </div>
+
+    <div class="modal" id="modalAlteracaoDados" style="display: none;">
+        <div class="conteudoModal" id="conteudoModalAlt">
+            <span>Um dos contatos da agenda foi atualizado.</span>
+            <br>
+            <span>Deseja atualizar seu aplicativo?</span>
+            <br>
             <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Sim">Sim</button>
             <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Não">Não</button>
         </div>

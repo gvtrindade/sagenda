@@ -10,26 +10,18 @@ for (k = 0; k < arrayDados.length; k++) {
     contatosNaoFiltrados.push(arrayDados[k][1]);
 }
 
-// setInterval(
-//     function() {
-//         arquivoOriginal = editJsonFile("./Assets/data.json");
-//         if (JSON.stringify(arquivo) == JSON.stringify(arquivoOriginal)) {
-//             console.log("Diferença encontrada!")
-//         } else {
-//             console.log("Nenhuma diferença encontrada")
-//         }
-//     },
-//     1000
-// );
+const modalAlteracaoDados = document.getElementById("modalAlteracaoDados");
 
-function teste() {
-    arquivoOriginal = editJsonFile("./Assets/data.json");
-    if (JSON.stringify(arquivo) == JSON.stringify(arquivoOriginal)) {
-        console.log("Diferença encontrada!")
-    } else {
-        console.log("Nenhuma diferença encontrada")
-    }
-}
+let checkAlteracao = setInterval(
+    function() {
+        arquivoOriginal = editJsonFile("./Assets/data.json");
+        if (JSON.stringify(arquivo) !== JSON.stringify(arquivoOriginal)) {
+            modalAlteracaoDados.style.display = "block";
+        };
+    },
+    1000
+);
+
 
 function ordemAlfabetica(a, b) {
 
@@ -462,17 +454,27 @@ function editarContato(event) {
 
 function confirmarOuCancelar(event) {
 
-    let resposta = event.target.value;
+    let resposta = event.target;
 
-    if (resposta === "Sim") {
-        salvarContato(indexContatoEditado);
-        modalConfirmarAcao.style.display = "none";
-        modalAdicionar.style.display = "none";
-        modalInformacoes.style.display = "none";
-        mostrarContatos();
-        nomeContato.disabled = false;
-    } else {
-        modalConfirmarAcao.style.display = "none";
-    }
+    if (resposta.parentNode.id === "conteudoModalConf") {
+        if (resposta.value === "Sim") {
+            salvarContato(indexContatoEditado);
+            modalConfirmarAcao.style.display = "none";
+            modalAdicionar.style.display = "none";
+            modalInformacoes.style.display = "none";
+            mostrarContatos();
+            nomeContato.disabled = false;
+        } else {
+            modalConfirmarAcao.style.display = "none";
+        };
+    };
 
+    if (resposta.parentNode.id === "conteudoModalAlt") {
+        if (resposta.value === "Sim") {
+            location.reload();
+        } else {
+            clearInterval(checkAlteracao);
+            modalAlteracaoDados.style.display = "none";
+        };
+    };
 };
