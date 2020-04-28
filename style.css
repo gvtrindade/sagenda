@@ -298,6 +298,12 @@ button {
     transform: rotate(45deg);
 }
 
+.botaoEditar {
+    height: 30px;
+    width: 30px;
+    background-color: blue;
+}
+
 .botaoSalvar {
     left: 50%;
     position: relative;
@@ -350,3 +356,5 @@ button {
     padding: 5px;
     font-size: larger;
 }
+
+#modalConfirmarAcao {}

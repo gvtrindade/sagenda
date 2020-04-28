@@ -1,5 +1,6 @@
 //Inserir dados da base em um array
 const editJsonFile = require("edit-json-file");
+let arquivoOriginal;
 let arquivo = editJsonFile("./Assets/data.json");
 let objContatos = arquivo.data;
 let arrayDados = Object.entries(objContatos);
@@ -7,6 +8,27 @@ let contatosNaoFiltrados = [];
 
 for (k = 0; k < arrayDados.length; k++) {
     contatosNaoFiltrados.push(arrayDados[k][1]);
+}
+
+// setInterval(
+//     function() {
+//         arquivoOriginal = editJsonFile("./Assets/data.json");
+//         if (JSON.stringify(arquivo) == JSON.stringify(arquivoOriginal)) {
+//             console.log("Diferença encontrada!")
+//         } else {
+//             console.log("Nenhuma diferença encontrada")
+//         }
+//     },
+//     1000
+// );
+
+function teste() {
+    arquivoOriginal = editJsonFile("./Assets/data.json");
+    if (JSON.stringify(arquivo) == JSON.stringify(arquivoOriginal)) {
+        console.log("Diferença encontrada!")
+    } else {
+        console.log("Nenhuma diferença encontrada")
+    }
 }
 
 function ordemAlfabetica(a, b) {
@@ -76,7 +98,7 @@ function mostrarContatos() {
 
         contato.className = "contato";
         contato.id = contatos[i].nome;
-        contato.onclick = mostrarModal;
+        contato.onclick = mostrarModalInfo;
         listaContatos.appendChild(contato);
 
         let data = ["nome", "telefone", "email"];
@@ -92,11 +114,14 @@ function mostrarContatos() {
 //Modal com informações
 const modalInformacoes = document.getElementById("modalInformacoes");
 
-function mostrarModal(event) {
+function mostrarModalInfo(event) {
     mostrandoModal = true;
     let id;
     const listaModal = document.getElementById("listaModal");
     const infoContato = document.createElement("div");
+
+    listaModal.innerHTML = "";
+
     infoContato.id = "infoContato";
     listaModal.appendChild(infoContato);
 
@@ -136,17 +161,21 @@ function mostrarModal(event) {
 
 //Modal para adicionar contato
 const modalAdicionar = document.getElementById("modalAdicionar");
+const conteudoModalAdd = modalAdicionar.children[0];
+
 
 function mostrarModalAdd() {
     mostrandoModal = true;
     modalAdicionar.classList.add("fadeIn");
     modalAdicionar.style.display = "block";
+    nomeContato.disabled = false;
 }
 
 function fecharModal(event) {
     if (event.target.parentNode.parentNode.id == "conteudoModalAdd") {
         mostrandoModal = false;
         modalAdicionar.style.display = "none";
+        limparModalAdd();
     } else if (event.target.parentNode.parentNode.parentNode.id == "conteudoModalInfo") {
         mostrandoModal = false;
         modalInformacoes.style.display = "none";
@@ -159,6 +188,7 @@ window.onclick = function(event) {
     if (event.target == modalAdicionar) {
         mostrandoModal = false;
         modalAdicionar.style.display = "none";
+        limparModalAdd();
     } else if (event.target == modalInformacoes) {
         mostrandoModal = false;
         modalInformacoes.style.display = "none";
@@ -170,12 +200,21 @@ window.onclick = function(event) {
     } else {
         campoSetor.style.display = "none";
     }
+
+    if (modalInformacoes.style.display === "block" && modalAdicionar.style.display === "block") {
+        modoEditar = true;
+        conteudoModalAdd.children[1].innerText = "Editar Contato";
+    } else {
+        modoEditar = false;
+        conteudoModalAdd.children[1].innerText = "Adicionar Contato";
+    }
 };
 
 window.onkeyup = function(event) {
     if (event.key == "Escape") {
         mostrandoModal = false;
         modalAdicionar.style.display = "none";
+        limparModalAdd();
         mostrandoModal = false;
         modalInformacoes.style.display = "none";
         listaModal.innerHTML = "";
@@ -191,13 +230,19 @@ function Contato(nome, telefone, email, categoria, setor) {
     this.setor = setor;
 }
 
-function salvarContato() {
-    let nomeDuplicado = false;
+function botaoSalvar() {
+
+    if (modoEditar === true) {
+        modalConfirmarAcao.style.display = "block";
+        return;
+    }
 
     if (msgErroCadastrar() === true) {
         alert("Existem campos vazios!");
         return;
     }
+
+    let nomeDuplicado = false;
 
     contatos.forEach((contato) => {
         if (nomeContato.value === contato.nome) {
@@ -208,26 +253,46 @@ function salvarContato() {
     if (nomeDuplicado === true) {
         alert("Um contato com este nome já existe.");
         return;
-    } else {
-        let contato = new Contato(
-            nomeContato.value,
-            telefoneContato.value,
-            emailContato.value,
-            categoriaContato.value,
-            campoSetor.children[2].value
-        );
-
-        let nomeObjContato = nomeContato.value;
-
-        contatos.push(contato);
-        contatos.sort(ordemAlfabetica);
-        arquivo.set(nomeObjContato, contato);
-        arquivo.save();
-
-        limparModalAdd();
-        mostrarContatos();
-        modalAdicionar.style.display = "none";
     };
+
+    salvarContato();
+
+};
+
+function salvarContato(indexContato) {
+
+    let setor;
+    if (categoriaContato.value === "Senado") {
+        setor = campoSetor.children[2].value;
+    } else { setor = ""; }
+
+    let contato = new Contato(
+        nomeContato.value,
+        telefoneContato.value,
+        emailContato.value,
+        categoriaContato.value,
+        setor
+    );
+
+    let nomeObjContato = nomeContato.value;
+
+
+    if (modoEditar === true) {
+        contatos[indexContato].telefone = contato.telefone
+        contatos[indexContato].email = contato.email
+        contatos[indexContato].categoria = contato.categoria
+        contatos[indexContato].setor = contato.setor
+    } else {
+        contatos.push(contato);
+    }
+    contatos.sort(ordemAlfabetica);
+    arquivo.set(nomeObjContato, contato);
+    arquivo.save();
+
+    limparModalAdd();
+    mostrarContatos();
+    modalAdicionar.style.display = "none";
+
 };
 
 //Deletar contato
@@ -279,11 +344,11 @@ function resetarEstado() {
 }
 
 //Mensagem de erro no cadatro de contato
-const conteudoModalAdd = [nomeContato, telefoneContato, categoriaContato];
+const listConteudoModalAdd = [nomeContato, telefoneContato, categoriaContato];
 
 function msgErroCadastrar() {
     let resposta = new Boolean(false);
-    conteudoModalAdd.forEach((element) => {
+    listConteudoModalAdd.forEach((element) => {
         if (element.value === "") {
             resposta = true;
         }
@@ -368,4 +433,46 @@ function pesquisar() {
     } else {
         resultadoPesquisa.style.display = "none"
     }
+};
+
+//Função de edição de contato
+const modalConfirmarAcao = document.getElementById("modalConfirmarAcao");
+let modoEditar;
+let indexContatoEditado;
+
+function editarContato(event) {
+
+    modalAdicionar.style.display = "block";
+    let nomeDoContato = listaModal.children[0].innerText;
+
+    contatos.forEach((contato, index) => {
+        if (contato.nome === nomeDoContato) {
+            indexContatoEditado = index;
+        }
+    });
+
+    nomeContato.value = contatos[indexContatoEditado].nome;
+    nomeContato.disabled = true;
+    telefoneContato.value = contatos[indexContatoEditado].telefone;
+    emailContato.value = contatos[indexContatoEditado].email;
+    categoriaContato.value = contatos[indexContatoEditado].categoria;
+    campoSetor.children[2].value = contatos[indexContatoEditado].setor;
+
+};
+
+function confirmarOuCancelar(event) {
+
+    let resposta = event.target.value;
+
+    if (resposta === "Sim") {
+        salvarContato(indexContatoEditado);
+        modalConfirmarAcao.style.display = "none";
+        modalAdicionar.style.display = "none";
+        modalInformacoes.style.display = "none";
+        mostrarContatos();
+        nomeContato.disabled = false;
+    } else {
+        modalConfirmarAcao.style.display = "none";
+    }
+
 };

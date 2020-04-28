@@ -16,7 +16,7 @@
         </button> -->
         <div class="pesquisa">
             <input type="search" id="caixaPesquisa" onkeyup="pesquisar()" placeholder="Pesquisar" />
-            <button class="botao" id="botaoPesquisar">
+            <button class="botao" id="botaoPesquisar" onclick="teste()">
           <img src="./Assets/Icones/procurar.svg" />
         </button>
         </div>
@@ -64,15 +64,16 @@
         <div class="conteudoModal" id="conteudoModalInfo">
             <div class="botoesModal">
                 <button class="botaoFechar" onclick="fecharModal(event)">
-          <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" />
-        </button>
+                    <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" />
+                </button>
+
+                <button class="botaoEditar" onclick="editarContato(event)">
+                    <!-- <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" /> -->
+                </button>
+
                 <button class="botaoDeletar" id="botaoDeletarModal" onblur="resetarEstado()" onclick="deletarContato(event)">
-          <img
-            class="iconeDeletar"
-            id="iconeDeletarModal"
-            src="./Assets/Icones/lixeira.svg"
-          />
-        </button>
+                    <img class="iconeDeletar" id="iconeDeletarModal" src="./Assets/Icones/lixeira.svg"/>
+                </button>
             </div>
             <div id="listaModal"></div>
         </div>
@@ -81,8 +82,8 @@
     <div class="modal" id="modalAdicionar">
         <div class="conteudoModal" id="conteudoModalAdd">
             <button class="botaoFechar" onclick="fecharModal(event)">
-          <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" />
-        </button>
+                <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" />
+            </button>
 
             <h1>Adicionar Contato</h1>
             <hr />
@@ -123,7 +124,15 @@
                 </div>
             </form>
 
-            <button class="botaoSalvar" onclick="salvarContato()">Salvar</button>
+            <button class="botaoSalvar" onclick="botaoSalvar()">Salvar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="modalConfirmarAcao" style="display: none;">
+        <div class="conteudoModal" id="conteudoModalConf">
+            <span>Você deseja confirmar esta ação?</span>
+            <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Sim">Sim</button>
+            <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Não">Não</button>
         </div>
     </div>
 
