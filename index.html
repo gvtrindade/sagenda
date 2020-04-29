@@ -88,42 +88,49 @@
             <h1>Adicionar Contato</h1>
             <hr />
 
-            <form>
-                <div id="camposModalAdd">
-                    <div class="campo">
-                        <label for="nomeContato">Nome:</label>
-                        <input class="textoInput" id="nomeContato" type="text" required="true" />
-                    </div>
+            <form id="camposModalAdd">
+                <div class="campo">
+                    <label for="nomeContato">Nome:</label>
+                    <input class="textoInput" id="nomeContato" type="text" required="true" />
+                </div>
 
-                    <div class="campo">
-                        <label for="telefoneContato">Telefone:</label>
-                        <input class="textoInput" id="telefoneContato" type="tel" />
-                    </div>
+                <div class="campo">
+                    <label for="telefoneContato">Telefone:</label>
+                    <input class="textoInput" id="telefoneContato" type="tel" />
+                </div>
 
-                    <div class="campo">
-                        <label for="emailContato">Email:</label>
-                        <input class="textoInput" id="emailContato" type="text" />
-                    </div>
+                <div class="campo">
+                    <label for="emailContato">Email:</label>
+                    <input class="textoInput" id="emailContato" type="text" />
+                </div>
 
-                    <div class="campo">
-                        <label for="categoriaContato">Categoria:</label>
-                        <select class="textoInput" id="categoriaContato" autocomplete="off" required="true">
-                <option value="">Selecione...</option>
-                <option value="SEQUALOG">SEQUALOG</option>
-                <option value="Senado">Senado</option>
-                <option value="Externo">Externo</option>
-              </select>
+                <div class="campo">
+                    <label for="categoriaContato">Categoria:</label>
+                    <select class="textoInput" id="categoriaContato" autocomplete="off" required="true">
+                        <option value="">Selecione...</option>
+                        <option value="SEQUALOG">SEQUALOG</option>
+                        <option value="Senado">Senado</option>
+                        <option value="Externo">Externo</option>
+                     </select>
+                </div>
+
+                <div class="campo" style="padding: 10px 75px;">
+                    <div id="campoSetor" style="display: none">
+                        <label for="setorContato" style="text-align:left; padding: 0 5px;">Setor:</label>
+                        <br>
+                        <input class="textoInput" style="text-align:center" id="setorContato" type="text" />
                     </div>
-                    <div class="campo" style="padding: 10px 75px;">
-                        <div id="campoSetor" style="display: none">
-                            <label for="setorContato" style="text-align:left; padding: 0 5px;">Setor:</label>
-                            <br>
-                            <input class="textoInput" style="text-align:center" id="setorContato" type="text" />
-                        </div>
-                    </div>
+                </div>
+
+                <div id="camposAdicionais">
+
                 </div>
             </form>
 
+            <button class="botaoSalvar" onclick="adicionarCampo()">Adicionar Campo</button>
+            <br>
+            <button class="botaoSalvar" id="botaoRemoverCampo" onclick="removerCampo()" style="display:none">Remover Último Campo</button>
+            <br>
             <button class="botaoSalvar" onclick="botaoSalvar()">Salvar</button>
         </div>
     </div>
