@@ -1,25 +1,47 @@
 //Inserir dados da base em um array
 const editJsonFile = require("edit-json-file");
 let arquivoOriginal;
-let arquivo = editJsonFile("./Assets/data.json");
-let objContatos = arquivo.data;
-let arrayDados = Object.entries(objContatos);
-let contatosNaoFiltrados = [];
+let arquivo;
+let objContatos;
+let arrayDados;
+let contatosNaoFiltrados;
+let contatos;
 
-for (k = 0; k < arrayDados.length; k++) {
-    contatosNaoFiltrados.push(arrayDados[k][1]);
-}
+function montarArrayContatos() {
+    contatos = [];
+    arquivo = editJsonFile("./Assets/data.json");
+    objContatos = arquivo.data
+    arrayDados = Object.entries(objContatos)
+    contatosNaoFiltrados = [];
 
-const modalAlteracaoDados = document.getElementById("modalAlteracaoDados");
+    for (k = 0; k < arrayDados.length; k++) {
+        contatosNaoFiltrados.push(arrayDados[k][1]);
+    };
 
-let checkAlteracao = setInterval(
+    contatos = contatosNaoFiltrados.sort(ordemAlfabetica);
+};
+
+let modalAtivado;
+
+setInterval(
     function() {
         arquivoOriginal = editJsonFile("./Assets/data.json");
+
         if (JSON.stringify(arquivo) !== JSON.stringify(arquivoOriginal)) {
-            modalAlteracaoDados.style.display = "block";
+            modalAtivado = 0;
+
+            Array.from(modais).forEach(modal => {
+                if (modal.style.display === "block") {
+                    modalAtivado += 1;
+                }
+            })
+
+            if (modalAtivado == 0) {
+                confirmarOuCancelar("Sim", "Atualizar");
+            };
         };
     },
-    1000
+    60 * 1000
 );
 
 
@@ -44,12 +66,11 @@ function ordemAlfabetica(a, b) {
     };
 
     return comparativo;
-}
-
-let contatos = contatosNaoFiltrados.sort(ordemAlfabetica);
+};
 
 window.onload = function() {
     limparModalAdd();
+    montarArrayContatos();
     mostrarContatos();
     window.addEventListener("focus", selecionarPesquisa);
 };
@@ -258,13 +279,18 @@ function salvarContato(indexContato) {
         setor = campoSetor.children[2].value;
     } else { setor = ""; }
 
-    let contato = new Contato(
-        nomeContato.value,
-        telefoneContato.value,
-        emailContato.value,
-        categoriaContato.value,
+    let nome = nomeContato.value;
+    let telefone = telefoneContato.value;
+    let email = emailContato.value;
+    let categoria = categoriaContato.value;
+
+    let contato = {
+        nome,
+        telefone,
+        email,
+        categoria,
         setor
-    );
+    };
 
     let nomeObjContato = nomeContato.value;
 
@@ -452,29 +478,23 @@ function editarContato(event) {
 
 };
 
-function confirmarOuCancelar(event) {
+function confirmarOuCancelar(resposta, acao) {
 
-    let resposta = event.target;
-
-    if (resposta.parentNode.id === "conteudoModalConf") {
-        if (resposta.value === "Sim") {
-            salvarContato(indexContatoEditado);
-            modalConfirmarAcao.style.display = "none";
-            modalAdicionar.style.display = "none";
-            modalInformacoes.style.display = "none";
-            mostrarContatos();
-            nomeContato.disabled = false;
-        } else {
-            modalConfirmarAcao.style.display = "none";
-        };
+    if (resposta === "Sim" && acao == "Editar") {
+        salvarContato(indexContatoEditado);
+        modalConfirmarAcao.style.display = "none";
+        modalAdicionar.style.display = "none";
+        modalInformacoes.style.display = "none";
+        mostrarContatos();
+        nomeContato.disabled = false;
+    } else if (resposta === "Não" && acao == "Editar") {
+        modalConfirmarAcao.style.display = "none";
     };
 
-    if (resposta.parentNode.id === "conteudoModalAlt") {
-        if (resposta.value === "Sim") {
-            location.reload();
-        } else {
-            clearInterval(checkAlteracao);
-            modalAlteracaoDados.style.display = "none";
-        };
+
+    if (resposta === "Sim" && acao == "Atualizar") {
+        console.log("Contato editado");
+        montarArrayContatos();
+        mostrarContatos();
     };
 };

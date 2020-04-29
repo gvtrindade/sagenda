@@ -235,7 +235,7 @@ button {
 .botoesModal {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin: 5px;
 }
 
 #listaModal {
@@ -260,7 +260,6 @@ button {
 .botaoDeletar {
     background-color: transparent;
     position: relative;
-    top: 5px;
     right: 5px;
     border: 0;
     height: 35px;
@@ -280,7 +279,6 @@ button {
     width: 30px;
     padding: 0;
     position: relative;
-    top: 5px;
     left: 5px;
     border-radius: 5px;
 }
@@ -299,9 +297,25 @@ button {
 }
 
 .botaoEditar {
-    height: 30px;
-    width: 30px;
-    background-color: blue;
+    background-color: transparent;
+    border: 0;
+    height: 35px;
+    width: 35px;
+    padding: 2px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.botaoEditar:hover {
+    background-color: rgb(228, 226, 226);
+    cursor: pointer;
+}
+
+.iconeEditar {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .botaoSalvar {
@@ -357,4 +371,17 @@ button {
     font-size: larger;
 }
 
-#modalConfirmarAcao {}
+.botaoOpcao {
+    position: relative;
+    margin: 20px 0;
+    font-size: large;
+    background-color: #512B58;
+    color: white;
+    border: 0;
+    padding: 5px 15px;
+}
+
+#conteudoModalConf {
+    text-align: center;
+    padding: 15px 5px;
+}

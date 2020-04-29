@@ -68,7 +68,7 @@
                 </button>
 
                 <button class="botaoEditar" onclick="editarContato(event)">
-                    <!-- <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" /> -->
+                    <img class="iconeEditar" src="./Assets/Icones/editar.svg" />
                 </button>
 
                 <button class="botaoDeletar" id="botaoDeletarModal" onblur="resetarEstado()" onclick="deletarContato(event)">
@@ -130,21 +130,10 @@
 
     <div class="modal" id="modalConfirmarAcao" style="display: none;">
         <div class="conteudoModal" id="conteudoModalConf">
-            <span>Você deseja confirmar esta ação?</span>
+            <span>Você deseja editar este contato?</span>
             <br>
-            <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Sim">Sim</button>
-            <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Não">Não</button>
-        </div>
-    </div>
-
-    <div class="modal" id="modalAlteracaoDados" style="display: none;">
-        <div class="conteudoModal" id="conteudoModalAlt">
-            <span>Um dos contatos da agenda foi atualizado.</span>
-            <br>
-            <span>Deseja atualizar seu aplicativo?</span>
-            <br>
-            <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Sim">Sim</button>
-            <button class="botaoSalvar" onclick="confirmarOuCancelar(event)" value="Não">Não</button>
+            <button class="botaoOpcao" onclick="confirmarOuCancelar('Sim', 'Editar')" value="Sim">Sim</button>
+            <button class="botaoOpcao" onclick="confirmarOuCancelar('Não', 'Editar')" value="Não">Não</button>
         </div>
     </div>
 

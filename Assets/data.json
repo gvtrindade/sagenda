@@ -73,16 +73,17 @@
     },
     "Ari Cardoso da Silva": {
         "nome": "Ari Cardoso da Silva",
-        "telefone": "4069",
+        "telefone": "4068",
         "email": "aricar@senado.gov.br",
         "categoria": "SEQUALOG",
         "setor": ""
     },
     "Jorge Trindade": {
         "nome": "Jorge Trindade",
-        "telefone": "323",
+        "telefone": "3223",
         "email": "",
         "categoria": "Senado",
-        "setor": "SPOL"
+        "setor": "SPOL",
+        "texto": "Trabalha na oficina da polícia"
     }
 }
