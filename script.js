@@ -100,6 +100,7 @@ function limparModalAdd() {
     emailContato.value = "";
     categoriaContato.value = "";
     campoSetor.children[2].value = "";
+    camposAdicionais.innerHTML = "";
 }
 
 //Mostrar lista de contatos
@@ -280,47 +281,57 @@ function salvarContato(indexContato) {
     let contatoAdicionado = {};
 
     console.log("Função ativada")
+
+    let setor;
+    if (categoriaContato.value === "Senado") {
+        setor = campoSetor.children[2].value;
+    } else { setor = ""; }
+
+    let nome = nomeContato.value;
+    let telefone = telefoneContato.value;
+    let email = emailContato.value;
+    let categoria = categoriaContato.value;
+
+    let contato = {
+        nome,
+        telefone,
+        email,
+        categoria,
+        setor
+    };
+
     Array.from(camposAdicionais.children).forEach(campo => {
-        console.log(campo.children[1].value);
+        let inputCampo = campo.children[0].value
+        let inputValor = campo.children[1].value
+
+        if (inputCampo.toUpperCase == "TELEFONE" || "EMAIL") {
+            inputCampo = inputCampo + " 2";
+        }
+
+        if (inputCampo !== "" && inputValor !== "") {
+            contato[inputCampo] = inputValor;
+        };
     });
 
-    // let setor;
-    // if (categoriaContato.value === "Senado") {
-    //     setor = campoSetor.children[2].value;
-    // } else { setor = ""; }
-
-    // let nome = nomeContato.value;
-    // let telefone = telefoneContato.value;
-    // let email = emailContato.value;
-    // let categoria = categoriaContato.value;
-
-    // let contato = {
-    //     nome,
-    //     telefone,
-    //     email,
-    //     categoria,
-    //     setor
-    // };
-
-    // let nomeObjContato = nomeContato.value;
+    let nomeObjContato = nomeContato.value;
 
 
-    // if (modoEditar === true) {
-    //     contatos[indexContato].telefone = contato.telefone
-    //     contatos[indexContato].email = contato.email
-    //     contatos[indexContato].categoria = contato.categoria
-    //     contatos[indexContato].setor = contato.setor
-    // } else {
-    //     contatos.push(contato);
-    // }
-    // contatos.sort(ordemAlfabetica);
-    // arquivo.set(nomeObjContato, contato);
-    // arquivo.save();
+    if (modoEditar === true) {
+        contatos[indexContato].telefone = contato.telefone
+        contatos[indexContato].email = contato.email
+        contatos[indexContato].categoria = contato.categoria
+        contatos[indexContato].setor = contato.setor
+    } else {
+        contatos.push(contato);
+    }
 
-    // limparModalAdd();
-    // mostrarContatos();
-    // modalAdicionar.style.display = "none";
+    contatos.sort(ordemAlfabetica);
+    arquivo.set(nomeObjContato, contato);
+    arquivo.save();
 
+    limparModalAdd();
+    mostrarContatos();
+    modalAdicionar.style.display = "none";
 };
 
 
@@ -331,12 +342,11 @@ function adicionarCampo() {
     botaoRemoverCampo.style.display = "block";
 
     const div = document.createElement("div");
-    const input = document.createElement("input");
+    const campo = document.createElement("input");
+    const valor = document.createElement("input");
 
-    input.type = "text";
-
-    let campo = input;
-    let valor = input;
+    campo.type = "text";
+    valor.type = "text";
 
     campo.placeholder = "Campo";
     valor.placeholder = "Valor";
