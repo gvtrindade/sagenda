@@ -41,7 +41,7 @@ setInterval(
             };
         };
     },
-    60 * 1000
+    1 * 1000
 );
 
 
@@ -239,13 +239,35 @@ window.onkeyup = function(event) {
 //Adicionar contato
 let camposAdicionais = document.getElementById("camposAdicionais");
 
-function Contato(nome, telefone, email, categoria, setor) {
-    this.nome = nome;
-    this.telefone = telefone;
-    this.email = email;
-    this.categoria = categoria;
-    this.setor = setor;
-}
+function montarObjContatoEditado() {
+
+    let objContatoEditado = {};
+
+    Array.from(campos).forEach(campo => {
+
+        let chaveCampo;
+
+        if (campo.children[0].id === "campoSetor") {
+            chaveCampo = campoSetor.children[0].innerText.slice(0, -1).toLowerCase();
+            objContatoEditado[chaveCampo] = campoSetor.children[2].value;
+        } else {
+            if (campo.children[0].type === "text") {
+                chaveCampo = campo.children[0].value.toLowerCase();
+                Object.keys(objContatoEditado).forEach(chave => {
+                    if (chaveCampo === chave) { chaveCampo = `${chaveCampo}2` }
+                });
+                objContatoEditado[chaveCampo] = campo.children[1].value;
+            } else {
+                chaveCampo = campo.children[0].innerText.slice(0, -1).toLowerCase();
+                objContatoEditado[chaveCampo] = campo.children[1].value;
+            }
+        }
+
+    });
+
+    return objContatoEditado;
+
+};
 
 function botaoSalvar() {
 
@@ -287,40 +309,17 @@ function salvarContato(indexContato) {
         setor = campoSetor.children[2].value;
     } else { setor = ""; }
 
-    let nome = nomeContato.value;
-    let telefone = telefoneContato.value;
-    let email = emailContato.value;
-    let categoria = categoriaContato.value;
-
-    let contato = {
-        nome,
-        telefone,
-        email,
-        categoria,
-        setor
-    };
-
-    Array.from(camposAdicionais.children).forEach(campo => {
-        let inputCampo = campo.children[0].value
-        let inputValor = campo.children[1].value
-
-        if (inputCampo.toUpperCase == "TELEFONE" || "EMAIL") {
-            inputCampo = inputCampo + " 2";
-        }
-
-        if (inputCampo !== "" && inputValor !== "") {
-            contato[inputCampo] = inputValor;
-        };
-    });
+    let contato = montarObjContatoEditado();
 
     let nomeObjContato = nomeContato.value;
 
 
     if (modoEditar === true) {
-        contatos[indexContato].telefone = contato.telefone
-        contatos[indexContato].email = contato.email
-        contatos[indexContato].categoria = contato.categoria
-        contatos[indexContato].setor = contato.setor
+
+        Object.keys(contatos[indexContato]).forEach(key => {
+            contatos[indexContato][key] = contato[key];
+        })
+
     } else {
         contatos.push(contato);
     }
@@ -337,20 +336,28 @@ function salvarContato(indexContato) {
 
 const botaoRemoverCampo = document.getElementById("botaoRemoverCampo");
 
-function adicionarCampo() {
+function adicionarCampo(chaveContato, valorContato) {
 
     botaoRemoverCampo.style.display = "block";
 
     const div = document.createElement("div");
-    const campo = document.createElement("input");
+    let campo;
     const valor = document.createElement("input");
 
-    campo.type = "text";
+    if (modoEditar === true) {
+        campo = document.createElement("label");
+        let titulo = chaveContato.charAt(0).toUpperCase() + chaveContato.slice(1);
+        campo.innerText = `${titulo}:`;
+        valor.value = valorContato
+    } else {
+        campo = document.createElement("input");
+        campo.type = "text";
+        campo.placeholder = "Campo";
+        valor.placeholder = "Valor";
+    }
+
+    div.className = "campo";
     valor.type = "text";
-
-    campo.placeholder = "Campo";
-    valor.placeholder = "Valor";
-
 
     camposAdicionais.appendChild(div);
     div.appendChild(campo);
@@ -513,26 +520,46 @@ function pesquisar() {
 
 //Função de edição de contato
 const modalConfirmarAcao = document.getElementById("modalConfirmarAcao");
+const campos = document.getElementsByClassName("campo");
 let modoEditar;
 let indexContatoEditado;
 
 function editarContato(event) {
 
+    modoEditar = true;
+
     modalAdicionar.style.display = "block";
     let nomeDoContato = listaModal.children[0].innerText;
+
+    let chavesContato = []
 
     contatos.forEach((contato, index) => {
         if (contato.nome === nomeDoContato) {
             indexContatoEditado = index;
+            chavesContato = Object.keys(contato);
+            if (chavesContato.length > 5) {
+                chavesContato = chavesContato.slice(5)
+                chavesContato.forEach(chave => {
+                    adicionarCampo(chave, contato[chave]);
+                })
+            };
         }
     });
 
-    nomeContato.value = contatos[indexContatoEditado].nome;
     nomeContato.disabled = true;
-    telefoneContato.value = contatos[indexContatoEditado].telefone;
-    emailContato.value = contatos[indexContatoEditado].email;
-    categoriaContato.value = contatos[indexContatoEditado].categoria;
-    campoSetor.children[2].value = contatos[indexContatoEditado].setor;
+
+    Array.from(campos).forEach(campo => {
+
+        let chaveCampo;
+
+        if (campo.children[0].id === "campoSetor") {
+            chaveCampo = campoSetor.children[0].innerText.slice(0, -1).toLowerCase();
+            campoSetor.children[2].value = contatos[indexContatoEditado][chaveCampo];
+        } else {
+            chaveCampo = campo.children[0].innerText.slice(0, -1).toLowerCase();
+            campo.children[1].value = contatos[indexContatoEditado][chaveCampo];
+        }
+    });
 
 };
 
