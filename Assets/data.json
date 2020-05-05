@@ -3,13 +3,15 @@
     "nome": "Cássia Maria de Oliveira",
     "telefone": "4072",
     "email": "",
-    "categoria": "SEQUALOG"
+    "categoria": "SEQUALOG",
+    "setor": ""
   },
   "Daniel Souza da Trindade": {
     "nome": "Daniel Souza da Trindade",
     "telefone": "1681",
     "email": "danielst@senado.gov.br",
-    "categoria": "SEQUALOG"
+    "categoria": "SEQUALOG",
+    "setor": ""
   },
   "Eduardo de Paula Rocha": {
     "nome": "Eduardo de Paula Rocha",
@@ -85,5 +87,20 @@
     "categoria": "Senado",
     "setor": "SPOL",
     "texto": "Trabalha na oficina da polícia"
+  },
+  "a": {
+    "nome": "a",
+    "telefone": "123",
+    "email": "abr@gmail.com",
+    "categoria": "SEQUALOG",
+    "setor": "",
+    "telefone2": "321"
+  },
+  "aa": {
+    "nome": "aa",
+    "telefone": "123",
+    "email": "",
+    "categoria": "Senado",
+    "setor": "asb"
   }
 }

@@ -99,7 +99,7 @@ function limparModalAdd() {
     telefoneContato.value = "";
     emailContato.value = "";
     categoriaContato.value = "";
-    campoSetor.children[2].value = "";
+    campoSetor.children[1].value = "";
     camposAdicionais.innerHTML = "";
 }
 
@@ -145,29 +145,33 @@ function mostrarModalInfo(event) {
         id = event.target.id;
     }
 
-    let contato = contatos.find((element) => element.nome === id);
+    let contato = contatos.find(contato => contato.nome === id);
 
-    for (let [key, value] of Object.entries(contato)) {
+
+    Array.from(Object.entries(contato)).forEach(chaveEValor => {
+        let chave = chaveEValor[0];
+        let valor = chaveEValor[1];
         let info;
         let hr = document.createElement("hr");
 
-        if (`${key}` !== "nome") {
+        if (chave !== "nome") {
             info = document.createElement("p");
-            let data = `${key}`.charAt(0).toUpperCase() + `${key}`.slice(1);
-            info.innerText = data + `: ${value}`;
+            let data = chave.charAt(0).toUpperCase() + chave.slice(1);
+            info.innerText = data + `: ${valor}`;
             infoContato.appendChild(info);
             if (info.innerText === "Setor: ") {
                 infoContato.removeChild(info);
             };
         } else {
             info = document.createElement("h1");
-            info.innerText = `${value}`;
+            info.innerText = valor;
             listaModal.insertBefore(hr, listaModal.childNodes[0]);
             listaModal.insertBefore(info, listaModal.childNodes[0]);
         };
 
         info.className = "data";
-    }
+    })
+
 
     modalInformacoes.style.display = "block";
     modalInformacoes.classList.add("fadeIn");
@@ -247,14 +251,19 @@ function montarObjContatoEditado() {
 
         let chaveCampo;
 
-        if (campo.children[0].id === "campoSetor") {
-            chaveCampo = campoSetor.children[0].innerText.slice(0, -1).toLowerCase();
-            objContatoEditado[chaveCampo] = campoSetor.children[2].value;
-        } else {
-            if (campo.children[0].type === "text") {
+        let valorCampo = campo.children[1].value;
+        if (valorCampo !== "" && chaveCampo === "email" || "setor") {
+            if (campo.children[0].nodeName === "SELECT") {
                 chaveCampo = campo.children[0].value.toLowerCase();
                 Object.keys(objContatoEditado).forEach(chave => {
-                    if (chaveCampo === chave) { chaveCampo = `${chaveCampo}2` }
+                    if (chaveCampo === chave) {
+                        if (isNaN(chaveCampo.slice(-1))) {
+                            chaveCampo = chaveCampo + 2
+                        } else {
+                            let numChave = parseInt(chaveCampo.slice(-1), 10) + 1
+                            chaveCampo = chaveCampo.slice(0, -1) + numChave
+                        }
+                    }
                 });
                 objContatoEditado[chaveCampo] = campo.children[1].value;
             } else {
@@ -284,7 +293,7 @@ function botaoSalvar() {
     let nomeDuplicado = false;
 
     contatos.forEach((contato) => {
-        if (nomeContato.value === contato.nome) {
+        if (nomeContato.value.toLowerCase() === contato.nome.toLowerCase()) {
             nomeDuplicado = true;
         }
     });
@@ -302,27 +311,20 @@ function salvarContato(indexContato) {
 
     let contatoAdicionado = {};
 
-    console.log("Função ativada")
-
     let setor;
     if (categoriaContato.value === "Senado") {
-        setor = campoSetor.children[2].value;
+        setor = campoSetor.children[1].value;
     } else { setor = ""; }
 
     let contato = montarObjContatoEditado();
 
     let nomeObjContato = nomeContato.value;
 
-
     if (modoEditar === true) {
-
-        Object.keys(contatos[indexContato]).forEach(key => {
-            contatos[indexContato][key] = contato[key];
-        })
-
-    } else {
-        contatos.push(contato);
+        contatos.splice(indexContato, 1)
     }
+
+    contatos.push(contato);
 
     contatos.sort(ordemAlfabetica);
     arquivo.set(nomeObjContato, contato);
@@ -333,36 +335,44 @@ function salvarContato(indexContato) {
     modalAdicionar.style.display = "none";
 };
 
-
+//Adicionar campo ao modal de adicionar
 const botaoRemoverCampo = document.getElementById("botaoRemoverCampo");
 
-function adicionarCampo(chaveContato, valorContato) {
+function adicionarCampo() {
 
     botaoRemoverCampo.style.display = "block";
 
     const div = document.createElement("div");
-    let campo;
+    let selectTitulo;
     const valor = document.createElement("input");
+    let titulos = ["Selecione...", "Telefone", "Email", "Texto"];
 
-    if (modoEditar === true) {
-        campo = document.createElement("label");
-        let titulo = chaveContato.charAt(0).toUpperCase() + chaveContato.slice(1);
-        campo.innerText = `${titulo}:`;
-        valor.value = valorContato
-    } else {
-        campo = document.createElement("input");
-        campo.type = "text";
-        campo.placeholder = "Campo";
-        valor.placeholder = "Valor";
-    }
+
+    selectTitulo = document.createElement("select");
+
+    titulos.forEach(titulo => {
+        let opcao = document.createElement("option");
+        opcao.innerText = titulo;
+        if (titulo === "Selecione...") {
+            opcao.value = "";
+            selectTitulo.appendChild(opcao);
+        } else {
+            opcao.value = titulo;
+            selectTitulo.appendChild(opcao);
+        }
+    });
+
+    selectTitulo.placeholder = "Campo";
+    valor.placeholder = "Valor";
+
 
     div.className = "campo";
+    valor.className = "textoInput";
     valor.type = "text";
 
     camposAdicionais.appendChild(div);
-    div.appendChild(campo);
+    div.appendChild(selectTitulo);
     div.appendChild(valor);
-
 
 }
 
@@ -531,7 +541,7 @@ function editarContato(event) {
     modalAdicionar.style.display = "block";
     let nomeDoContato = listaModal.children[0].innerText;
 
-    let chavesContato = []
+    let chavesContato = [];
 
     contatos.forEach((contato, index) => {
         if (contato.nome === nomeDoContato) {
@@ -540,7 +550,21 @@ function editarContato(event) {
             if (chavesContato.length > 5) {
                 chavesContato = chavesContato.slice(5)
                 chavesContato.forEach(chave => {
-                    adicionarCampo(chave, contato[chave]);
+                    const div = document.createElement("div");
+                    const selectTitulo = document.createElement("label");
+                    const valor = document.createElement("input");
+
+                    valor.className = "textoInput";
+                    div.className = "campo";
+                    valor.type = "text";
+
+                    camposAdicionais.appendChild(div);
+                    div.appendChild(selectTitulo);
+                    div.appendChild(valor);
+
+                    let titulo = chave.charAt(0).toUpperCase() + chave.slice(1);
+                    selectTitulo.innerText = `${titulo}:`;
+                    valor.value = contato[chave];
                 })
             };
         }
@@ -551,14 +575,9 @@ function editarContato(event) {
     Array.from(campos).forEach(campo => {
 
         let chaveCampo;
+        chaveCampo = campo.children[0].innerText.slice(0, -1).toLowerCase();
+        campo.children[1].value = contatos[indexContatoEditado][chaveCampo];
 
-        if (campo.children[0].id === "campoSetor") {
-            chaveCampo = campoSetor.children[0].innerText.slice(0, -1).toLowerCase();
-            campoSetor.children[2].value = contatos[indexContatoEditado][chaveCampo];
-        } else {
-            chaveCampo = campo.children[0].innerText.slice(0, -1).toLowerCase();
-            campo.children[1].value = contatos[indexContatoEditado][chaveCampo];
-        }
     });
 
 };
@@ -576,10 +595,4 @@ function confirmarOuCancelar(resposta, acao) {
         modalConfirmarAcao.style.display = "none";
     };
 
-
-    if (resposta === "Sim" && acao == "Atualizar") {
-        console.log("Contato editado");
-        montarArrayContatos();
-        mostrarContatos();
-    };
 };
