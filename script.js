@@ -37,7 +37,8 @@ setInterval(
             })
 
             if (modalAtivado == 0) {
-                confirmarOuCancelar("Sim", "Atualizar");
+                montarArrayContatos();
+                mostrarContatos();
             };
         };
     },
@@ -47,25 +48,27 @@ setInterval(
 
 function ordemAlfabetica(a, b) {
 
-    const removerCaracteresEspeciais = (palavra) => {
-        return palavra.normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, '') // Remove acentos
-            .replace(/([^\w]+|\s+)/g, '-') // Substitui espaço e outros caracteres por hífen
-            .replace(/\-\-+/g, '-') // Substitui multiplos hífens por um único hífen
-            .replace(/(^-+|-+$)/, '');
+    if (a.type !== "Submit" && b.type !== "Submit") {
+        const removerCaracteresEspeciais = (palavra) => {
+            return palavra.normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, '') // Remove acentos
+                .replace(/([^\w]+|\s+)/g, '-') // Substitui espaço e outros caracteres por hífen
+                .replace(/\-\-+/g, '-') // Substitui multiplos hífens por um único hífen
+                .replace(/(^-+|-+$)/, '');
+        }
+
+        const nomeA = removerCaracteresEspeciais(a.nome.toUpperCase());
+        const nomeB = removerCaracteresEspeciais(b.nome.toUpperCase());
+
+        let comparativo = 0;
+        if (nomeA > nomeB) {
+            comparativo = 1;
+        } else if (nomeA < nomeB) {
+            comparativo = -1;
+        };
+
+        return comparativo;
     }
-
-    const nomeA = removerCaracteresEspeciais(a.nome.toUpperCase());
-    const nomeB = removerCaracteresEspeciais(b.nome.toUpperCase());
-
-    let comparativo = 0;
-    if (nomeA > nomeB) {
-        comparativo = 1;
-    } else if (nomeA < nomeB) {
-        comparativo = -1;
-    };
-
-    return comparativo;
 };
 
 window.onload = function() {
@@ -247,14 +250,17 @@ function montarObjContatoEditado() {
 
     let objContatoEditado = {};
 
-    Array.from(campos).forEach(campo => {
+    Array.from(campos).forEach(campo => { //Para cada campo do formulário
 
+        let tituloCampo = campo.children[0];
         let chaveCampo;
+        let tipoChave = tituloCampo.nodeName;
 
-        let valorCampo = campo.children[1].value;
-        if (valorCampo !== "" && chaveCampo === "email" || "setor") {
-            if (campo.children[0].nodeName === "SELECT") {
-                chaveCampo = campo.children[0].value.toLowerCase();
+        if (tipoChave === "SELECT") {
+
+            if (tituloCampo.value !== "" && campo.children[2].value !== "") {
+
+                chaveCampo = tituloCampo.value.toLowerCase();
                 Object.keys(objContatoEditado).forEach(chave => {
                     if (chaveCampo === chave) {
                         if (isNaN(chaveCampo.slice(-1))) {
@@ -265,13 +271,26 @@ function montarObjContatoEditado() {
                         }
                     }
                 });
-                objContatoEditado[chaveCampo] = campo.children[1].value;
+                objContatoEditado[chaveCampo] = campo.children[2].value;
+
+            }
+
+        } else {
+
+            chaveCampo = campo.children[0].innerText.slice(0, -1).toLowerCase();
+            if (campo.children[1].type === "button") {
+
+                if (campo.children[2].value !== "") {
+                    objContatoEditado[chaveCampo] = campo.children[2].value;
+                } else {
+                    delete objContatoEditado[chaveCampo]
+                }
+
             } else {
-                chaveCampo = campo.children[0].innerText.slice(0, -1).toLowerCase();
                 objContatoEditado[chaveCampo] = campo.children[1].value;
             }
-        }
 
+        }
     });
 
     return objContatoEditado;
@@ -282,11 +301,6 @@ function botaoSalvar() {
 
     if (modoEditar === true) {
         modalConfirmarAcao.style.display = "block";
-        return;
-    }
-
-    if (msgErroCadastrar() === true) {
-        alert("Existem campos vazios!");
         return;
     }
 
@@ -340,15 +354,13 @@ const botaoRemoverCampo = document.getElementById("botaoRemoverCampo");
 
 function adicionarCampo() {
 
-    botaoRemoverCampo.style.display = "block";
+    // botaoRemoverCampo.style.display = "block";
 
     const div = document.createElement("div");
-    let selectTitulo;
+    const button = document.createElement("button");
+    let selectTitulo = document.createElement("select");
     const valor = document.createElement("input");
-    let titulos = ["Selecione...", "Telefone", "Email", "Texto"];
-
-
-    selectTitulo = document.createElement("select");
+    let titulos = ["Selecione...", "Telefone", "Email", "Complemento"];
 
     titulos.forEach(titulo => {
         let opcao = document.createElement("option");
@@ -362,9 +374,12 @@ function adicionarCampo() {
         }
     });
 
-    selectTitulo.placeholder = "Campo";
-    valor.placeholder = "Valor";
-
+    button.type = "button";
+    button.className = "botaoSalvar";
+    button.innerText = "-";
+    button.addEventListener("click", function() {
+        removerCampo(event);
+    });
 
     div.className = "campo";
     valor.className = "textoInput";
@@ -372,19 +387,16 @@ function adicionarCampo() {
 
     camposAdicionais.appendChild(div);
     div.appendChild(selectTitulo);
+    div.appendChild(button);
     div.appendChild(valor);
 
 }
 
-function removerCampo() {
+function removerCampo(event) {
 
-    let ultimoAdicionado = camposAdicionais.lastChild
+    let campoRemovido = event.target.parentNode
 
-    camposAdicionais.removeChild(ultimoAdicionado);
-
-    if (camposAdicionais.childElementCount === 0) {
-        botaoRemoverCampo.style.display = "none";
-    };
+    camposAdicionais.removeChild(campoRemovido);
 
 }
 
@@ -553,6 +565,14 @@ function editarContato(event) {
                     const div = document.createElement("div");
                     const selectTitulo = document.createElement("label");
                     const valor = document.createElement("input");
+                    const button = document.createElement("button");
+
+                    button.type = "button";
+                    button.className = "botaoSalvar";
+                    button.innerText = "-";
+                    button.addEventListener("click", function() {
+                        removerCampo(event);
+                    });
 
                     valor.className = "textoInput";
                     div.className = "campo";
@@ -560,6 +580,7 @@ function editarContato(event) {
 
                     camposAdicionais.appendChild(div);
                     div.appendChild(selectTitulo);
+                    div.appendChild(button);
                     div.appendChild(valor);
 
                     let titulo = chave.charAt(0).toUpperCase() + chave.slice(1);
