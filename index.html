@@ -81,14 +81,14 @@
 
     <div class="modal" id="modalAdicionar">
         <div class="conteudoModal" id="conteudoModalAdd">
-            <button class="botaoFechar" onclick="fecharModal(event)">
+            <button class="botaoFechar" style="margin: 5px 0;" onclick="fecharModal(event)">
                 <img class="iconeFechar" src="./Assets/Icones/adicionar.svg" />
             </button>
 
             <h1>Adicionar Contato</h1>
             <hr />
 
-            <form id="camposModalAdd">
+            <form id="camposModalAdd" onsubmit="event.preventDefault(); botaoSalvar();">
                 <div class="campo">
                     <label for="nomeContato">Nome:</label>
                     <input class="textoInput" id="nomeContato" type="text" required />
@@ -124,7 +124,7 @@
 
                 <button type="button" class="botaoSalvar" onclick="adicionarCampo()">Adicionar Campo</button>
                 <br>
-                <input type="submit" class="botaoSalvar" onsubmit="botaoSalvar(); return false" value="Salvar">Salvar</input>
+                <input type="submit" class="botaoSalvar" value="Salvar"></input>
 
             </form>
 
@@ -139,6 +139,16 @@
             <br>
             <button class="botaoOpcao" onclick="confirmarOuCancelar('Sim', 'Editar')" value="Sim">Sim</button>
             <button class="botaoOpcao" onclick="confirmarOuCancelar('Não', 'Editar')" value="Não">Não</button>
+        </div>
+    </div>
+
+    <div class="modal" id="modalErro" style="display: none;">
+        <div class="conteudoModal" id="conteudoModalErro">
+            <h2>Erro</h2>
+            <hr>
+            <span id="mensagemErro"></span>
+            <br>
+            <button class="botaoSalvar" onclick="fecharModalErro()" value="Ok">Ok</button>
         </div>
     </div>
 

@@ -31,9 +31,31 @@
   },
   "Edionay Aguiar": {
     "nome": "Edionay Aguiar",
-    "telefone": "3513",
+    "telefone": "3512",
     "email": "edionay@gmail.com",
     "categoria": "SEQUALOG",
     "setor": ""
+  },
+  "A": {
+    "nome": "A",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": ""
+  },
+  "ab": {
+    "nome": "ab",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": ""
+  },
+  "ac": {
+    "nome": "ac",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": "",
+    "telefone2": "1"
   }
 }

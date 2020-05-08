@@ -184,7 +184,6 @@ function mostrarModalInfo(event) {
 const modalAdicionar = document.getElementById("modalAdicionar");
 const conteudoModalAdd = modalAdicionar.children[0];
 
-
 function mostrarModalAdd() {
     mostrandoModal = true;
     modalAdicionar.classList.add("fadeIn");
@@ -233,14 +232,22 @@ window.onclick = function(event) {
 };
 
 window.onkeyup = function(event) {
-    if (event.key == "Escape") {
-        mostrandoModal = false;
-        modalAdicionar.style.display = "none";
-        limparModalAdd();
-        mostrandoModal = false;
-        modalInformacoes.style.display = "none";
-        listaModal.innerHTML = "";
+    switch (event.key) {
+        case "Escape":
+            if (modoEditar === true) {
+                modalAdicionar.style.display = "none";
+                limparModalAdd();
+                modoEditar = false
+            } else {
+                mostrandoModal = false;
+                modalAdicionar.style.display = "none";
+                limparModalAdd();
+                modalInformacoes.style.display = "none";
+                listaModal.innerHTML = "";
+            }
+            break;
     };
+
 };
 
 //Adicionar contato
@@ -313,8 +320,8 @@ function botaoSalvar() {
     });
 
     if (nomeDuplicado === true) {
-        alert("Um contato com este nome já existe.");
-        return;
+        msgErro("contatoRepetido");
+        return
     };
 
     salvarContato();
@@ -350,11 +357,7 @@ function salvarContato(indexContato) {
 };
 
 //Adicionar campo ao modal de adicionar
-const botaoRemoverCampo = document.getElementById("botaoRemoverCampo");
-
 function adicionarCampo() {
-
-    // botaoRemoverCampo.style.display = "block";
 
     const div = document.createElement("div");
     const button = document.createElement("button");
@@ -375,13 +378,14 @@ function adicionarCampo() {
     });
 
     button.type = "button";
-    button.className = "botaoSalvar";
+    button.className = "botaoDeletarCampo";
     button.innerText = "-";
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function(event) {
         removerCampo(event);
     });
 
     div.className = "campo";
+    selectTitulo.className = "selectInput";
     valor.className = "textoInput";
     valor.type = "text";
 
@@ -393,23 +397,19 @@ function adicionarCampo() {
 }
 
 function removerCampo(event) {
-
-    let campoRemovido = event.target.parentNode
-
+    let campoRemovido = event.target.parentNode;
+    console.log(event)
     camposAdicionais.removeChild(campoRemovido);
-
 }
 
 //Deletar contato
-const botaoDeletarModal = document.getElementById("botaoDeletarModal");
-const iconeDeletarModal = document.getElementById("iconeDeletarModal");
 let contadorCliques = false;
 
 function deletarContato(event) {
-    const botaoDeletarModal = event.target.parentNode
-    const conteudoModalInfo = botaoDeletarModal.parentNode.parentNode;
-    const indexNome = conteudoModalInfo.children.length - 1;
-    const listaModal = conteudoModalInfo.children[indexNome];
+    let botaoDeletarModal = event.target.parentNode
+    let conteudoModalInfo = botaoDeletarModal.parentNode.parentNode;
+    let indexNome = conteudoModalInfo.children.length - 1;
+    let listaModal = conteudoModalInfo.children[indexNome];
     let nomeContatoDeletado = listaModal.firstChild.innerText;
     let indexContatoDeletado;
 
@@ -442,6 +442,8 @@ function deletarContato(event) {
 };
 
 function resetarEstado() {
+    let botaoDeletarModal = document.getElementById("botaoDeletarModal");
+    let iconeDeletarModal = document.getElementById("iconeDeletarModal");
     botaoDeletarModal.style.backgroundColor = "transparent";
     iconeDeletarModal.style.filter = "invert(0)";
     botaoDeletarModal.classList.remove("fadeIn");
@@ -449,21 +451,24 @@ function resetarEstado() {
 }
 
 //Mensagem de erro no cadatro de contato
-const listConteudoModalAdd = [nomeContato, telefoneContato, categoriaContato];
+const modalErro = document.getElementById("modalErro");
+const mensagemErro = document.getElementById("mensagemErro");
 
-function msgErroCadastrar() {
-    let resposta = new Boolean(false);
-    listConteudoModalAdd.forEach((element) => {
-        if (element.value === "") {
-            resposta = true;
-        }
-    });
-    if (resposta === true) {
-        return true;
-    }
-}
+function msgErro(mensagem) {
+    modalErro.style.display = "block";
+
+    switch (mensagem) {
+        case "contatoRepetido":
+            mensagemErro.innerText = "Um contato com este nome já existe";
+            break;
+    };
+};
+
+function fecharModalErro() {
+    modalErro.style.display = "none";
+};
+
 //Função filtro
-
 function filtrarCategoria(event) {
 
     let contatosMostrados = 0;

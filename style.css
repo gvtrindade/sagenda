@@ -40,6 +40,7 @@ img {
 
 button {
     outline: none;
+    user-select: none;
 }
 
 .data {
@@ -146,6 +147,7 @@ button {
 #titulos {
     display: flex;
     justify-content: space-around;
+    user-select: none;
 }
 
 #listaContatos li {
@@ -235,7 +237,7 @@ button {
 .botoesModal {
     display: flex;
     justify-content: space-between;
-    margin: 5px;
+    margin: 5px 0;
 }
 
 #listaModal {
@@ -270,6 +272,10 @@ button {
 
 .botaoDeletar.fadeIn {
     animation: fadeIn 0.3s linear;
+}
+
+.botaoDeletar:hover {
+    cursor: pointer;
 }
 
 .botaoFechar {
@@ -381,4 +387,35 @@ button {
     width: 100%;
     margin: 0;
     padding: 0;
+}
+
+.selectInput {
+    border: 1px solid darkgray;
+    padding: 5px;
+    font-size: larger;
+    margin-bottom: 5px;
+    width: 50%;
+}
+
+.botaoDeletarCampo {
+    position: relative;
+    margin: 0 0 5px 5px;
+    font-size: large;
+    background-color: #512B58;
+    color: white;
+    border: 0;
+    width: 35px;
+    text-align: center;
+}
+
+.botaoDeletarCampo:hover {
+    background-color: rgb(114, 79, 121);
+    cursor: pointer;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
 }
