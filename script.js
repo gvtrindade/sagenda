@@ -216,7 +216,7 @@ window.onclick = function(event) {
     }
 
     if (categoriaContato.value === "Senado") {
-        campoSetor.style.display = "block";
+        campoSetor.style.display = "flex";
     } else {
         campoSetor.style.display = "none";
     }
@@ -398,7 +398,7 @@ function adicionarCampo() {
 
 function removerCampo(event) {
     let campoRemovido = event.target.parentNode;
-    console.log(event)
+    console.log(event.target)
     camposAdicionais.removeChild(campoRemovido);
 }
 
@@ -551,7 +551,7 @@ const campos = document.getElementsByClassName("campo");
 let modoEditar;
 let indexContatoEditado;
 
-function editarContato(event) {
+function editarContato() {
 
     modoEditar = true;
 
@@ -573,7 +573,7 @@ function editarContato(event) {
                     const button = document.createElement("button");
 
                     button.type = "button";
-                    button.className = "botaoSalvar";
+                    button.className = "botaoDeletarCampo";
                     button.innerText = "-";
                     button.addEventListener("click", function() {
                         removerCampo(event);
