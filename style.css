@@ -28,6 +28,7 @@ h1 {
 h2 {
     padding: 0;
     margin: 0;
+    user-select: none;
 }
 
 img {
@@ -144,6 +145,10 @@ button {
     height: 100%;
 }
 
+.conteudo span {
+    user-select: none;
+}
+
 #titulos {
     display: flex;
     justify-content: space-around;
@@ -199,8 +204,11 @@ button {
 }
 
 .modal {
+    overflow: auto;
     display: none;
     position: fixed;
+    justify-content: center;
+    align-items: center;
     z-index: 1;
     width: 100%;
     height: 100%;
@@ -228,9 +236,6 @@ button {
     padding: 5px;
     width: 370px;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 5px;
 }
 
@@ -324,11 +329,13 @@ button {
     padding: 0;
 }
 
+#conteudoModalAdd h1 {
+    user-select: none;
+}
+
 .botaoSalvar {
-    left: 50%;
-    position: relative;
-    transform: translate(-50%);
-    margin: 20px 0;
+    width: 40%;
+    margin: 10px 0;
     font-size: large;
     background-color: #512B58;
     color: white;
@@ -341,24 +348,52 @@ button {
     cursor: pointer;
 }
 
+.botaoAddCampo {
+    width: 60%;
+    margin: 15px 0 10px 0;
+    font-size: large;
+    background-color: #512B58;
+    color: white;
+    border: 0;
+    padding: 5px 15px;
+}
+
+.botaoAddCampo:hover {
+    background-color: rgb(114, 79, 121);
+    cursor: pointer;
+}
+
 #camposModalAdd {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
 }
 
 #camposModalAdd label {
     font-size: large;
+    user-select: none;
 }
 
 .campo {
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    justify-content: center;
 }
 
 .campo * {
+    width: 60%;
+}
+
+.campoAdicional {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.campoAdicional * {
     width: 60%;
 }
 
@@ -370,7 +405,7 @@ button {
 
 .botaoOpcao {
     position: relative;
-    margin: 20px 0;
+    margin: 20px;
     font-size: large;
     background-color: #512B58;
     color: white;
@@ -411,6 +446,14 @@ button {
 .botaoDeletarCampo:hover {
     background-color: rgb(114, 79, 121);
     cursor: pointer;
+}
+
+#conteudoModalErro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 5px;
+    user-select: none;
 }
 
 input[type="search"]::-webkit-search-decoration,

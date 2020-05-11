@@ -42,21 +42,6 @@
     "email": "",
     "categoria": "SEQUALOG",
     "setor": "",
-    "telefone2": "1"
-  },
-  "ab": {
-    "nome": "ab",
-    "telefone": "",
-    "email": "",
-    "categoria": "SEQUALOG",
-    "setor": ""
-  },
-  "ac": {
-    "nome": "ac",
-    "telefone": "",
-    "email": "",
-    "categoria": "SEQUALOG",
-    "setor": "",
-    "telefone2": "1"
+    "telefone2": "1234"
   }
 }

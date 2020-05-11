@@ -31,7 +31,7 @@ setInterval(
             modalAtivado = 0;
 
             Array.from(modais).forEach(modal => {
-                if (modal.style.display === "block") {
+                if (modal.style.display === "flex") {
                     modalAtivado += 1;
                 }
             })
@@ -176,7 +176,7 @@ function mostrarModalInfo(event) {
     })
 
 
-    modalInformacoes.style.display = "block";
+    modalInformacoes.style.display = "flex";
     modalInformacoes.classList.add("fadeIn");
 }
 
@@ -187,7 +187,7 @@ const conteudoModalAdd = modalAdicionar.children[0];
 function mostrarModalAdd() {
     mostrandoModal = true;
     modalAdicionar.classList.add("fadeIn");
-    modalAdicionar.style.display = "block";
+    modalAdicionar.style.display = "flex";
     nomeContato.disabled = false;
 }
 
@@ -221,7 +221,7 @@ window.onclick = function(event) {
         campoSetor.style.display = "none";
     }
 
-    if (modalInformacoes.style.display === "block" && modalAdicionar.style.display === "block") {
+    if (modalInformacoes.style.display === "flex" && modalAdicionar.style.display === "flex") {
         modoEditar = true;
         conteudoModalAdd.children[1].innerText = "Editar Contato";
     } else {
@@ -253,17 +253,24 @@ window.onkeyup = function(event) {
 //Adicionar contato
 let camposAdicionais = document.getElementById("camposAdicionais");
 
+
 function montarObjContatoEditado() {
 
     let objContatoEditado = {};
 
-    Array.from(campos).forEach(campo => { //Para cada campo do formulário
+    let arrayCampos = Array.from(HTMLcampos);
+    let arrayCamposAdicionais = Array.from(HTMLcamposAdicionais);
+    let arrayTodosCampos = arrayCampos.concat(arrayCamposAdicionais);
+
+    Array.from(arrayTodosCampos).forEach(campo => { //Para cada campo do formulário
 
         let tituloCampo = campo.children[0];
         let chaveCampo;
         let tipoChave = tituloCampo.nodeName;
 
+
         if (tipoChave === "SELECT") {
+
 
             if (tituloCampo.value !== "" && campo.children[2].value !== "") {
 
@@ -307,7 +314,7 @@ function montarObjContatoEditado() {
 function botaoSalvar() {
 
     if (modoEditar === true) {
-        modalConfirmarAcao.style.display = "block";
+        modalConfirmarAcao.style.display = "flex";
         return;
     }
 
@@ -384,7 +391,7 @@ function adicionarCampo() {
         removerCampo(event);
     });
 
-    div.className = "campo";
+    div.className = "campoAdicional";
     selectTitulo.className = "selectInput";
     valor.className = "textoInput";
     valor.type = "text";
@@ -398,7 +405,6 @@ function adicionarCampo() {
 
 function removerCampo(event) {
     let campoRemovido = event.target.parentNode;
-    console.log(event.target)
     camposAdicionais.removeChild(campoRemovido);
 }
 
@@ -455,7 +461,7 @@ const modalErro = document.getElementById("modalErro");
 const mensagemErro = document.getElementById("mensagemErro");
 
 function msgErro(mensagem) {
-    modalErro.style.display = "block";
+    modalErro.style.display = "flex";
 
     switch (mensagem) {
         case "contatoRepetido":
@@ -547,7 +553,9 @@ function pesquisar() {
 
 //Função de edição de contato
 const modalConfirmarAcao = document.getElementById("modalConfirmarAcao");
-const campos = document.getElementsByClassName("campo");
+const HTMLcampos = document.getElementsByClassName("campo");
+const HTMLcamposAdicionais = document.getElementsByClassName("campoAdicional");
+
 let modoEditar;
 let indexContatoEditado;
 
@@ -555,7 +563,7 @@ function editarContato() {
 
     modoEditar = true;
 
-    modalAdicionar.style.display = "block";
+    modalAdicionar.style.display = "flex";
     let nomeDoContato = listaModal.children[0].innerText;
 
     let chavesContato = [];
@@ -580,7 +588,7 @@ function editarContato() {
                     });
 
                     valor.className = "textoInput";
-                    div.className = "campo";
+                    div.className = "campoAdicional";
                     valor.type = "text";
 
                     camposAdicionais.appendChild(div);
@@ -598,7 +606,7 @@ function editarContato() {
 
     nomeContato.disabled = true;
 
-    Array.from(campos).forEach(campo => {
+    Array.from(HTMLcampos).forEach(campo => {
 
         let chaveCampo;
         chaveCampo = campo.children[0].innerText.slice(0, -1).toLowerCase();
