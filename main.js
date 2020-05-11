@@ -10,7 +10,7 @@ function createWindow() {
         },
         center: true,
         minWidth: 1024,
-        minHeight: 600,
+        minHeight: 768,
         icon: __dirname + "/Assets/Icones/agenda.png"
 
     })

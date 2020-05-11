@@ -40,8 +40,57 @@
     "nome": "A",
     "telefone": "",
     "email": "",
-    "categoria": "SEQUALOG",
+    "categoria": "Senado",
     "setor": "",
-    "telefone2": "1234"
+    "telefone2": "5321"
+  },
+  "B": {
+    "nome": "B",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": ""
+  },
+  "C": {
+    "nome": "C",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": ""
+  },
+  "D": {
+    "nome": "D",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": ""
+  },
+  "E": {
+    "nome": "E",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": ""
+  },
+  "F": {
+    "nome": "F",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": ""
+  },
+  "G": {
+    "nome": "G",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": ""
+  },
+  "H": {
+    "nome": "H",
+    "telefone": "",
+    "email": "",
+    "categoria": "SEQUALOG",
+    "setor": ""
   }
 }
